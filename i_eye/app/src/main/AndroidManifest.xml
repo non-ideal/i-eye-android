@@ -9,24 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_eye_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoReservedMainActivity">
+        <activity android:name=".ui.NoReservedMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".ReservedMainActivity" />
-        <activity android:name=".SearchDestinationActivity" />
-        <activity android:name=".SearchFavoritesActivity" />
-        <activity android:name=".DirectionsActivity" />
-        <activity android:name=".FavoritesActivity" />
-        <activity android:name=".RegisterFavoritesActivity" />
-        <activity android:name=".CheckCurrentLocationActivity" />
-        <activity android:name=".SearchingForLocationActivity" />
-        <activity android:name=".ReserveActivity" />
-        <activity android:name=".CheckDestinationActivity"></activity>
+        <activity android:name=".ui.SplashActivity" />
+        <activity android:name=".ui.ReservedMainActivity" />
+        <activity android:name=".ui.SearchDestinationActivity" />
+        <activity android:name=".ui.SearchFavoritesActivity" />
+        <activity android:name=".ui.DirectionsActivity" />
+        <activity android:name=".ui.FavoritesActivity" />
+        <activity android:name=".ui.RegisterFavoritesActivity" />
+        <activity android:name=".ui.CheckCurrentLocationActivity" />
+        <activity android:name=".ui.SearchingForLocationActivity" />
+        <activity android:name=".ui.ReserveActivity" />
+        <activity android:name=".ui.CheckDestinationActivity"></activity>
     </application>
 
 </manifest>

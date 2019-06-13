@@ -1,14 +1,15 @@
-package com.maas.soft.i_eye
+package com.maas.soft.i_eye.ui
 
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.maas.soft.i_eye.R
 
-class DirectionsActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_directions)
+        setContentView(R.layout.activity_splash)
         changeStatusBarColor()
     }
 
