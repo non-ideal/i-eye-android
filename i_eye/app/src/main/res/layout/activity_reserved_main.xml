@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ReservedMainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/orange">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="49dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bm_i_eye" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/linear_btn_reserved_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/orange"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="45sp"
+                tools:text="예약하기"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/gray"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center"
+                android:textColor="@color/text"
+                android:textSize="41sp"
+                tools:text="즐겨찾기"></TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linear_btn_reserved_main"
+            android:background="@color/black">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="20sp"
+                android:textColor="#ffffff"
+                android:textSize="41sp"
+                tools:text="421(저상) 버스\n예약 되었습니다." />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

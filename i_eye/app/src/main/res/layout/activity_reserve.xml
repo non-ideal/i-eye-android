@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterFavoritesActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/orange">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="49dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bm_i_eye" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/linear_btn_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/orange"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="41sp"
+                tools:text="예"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/gray"
+                android:fontFamily="@font/font_medium"
+                android:gravity="center"
+                android:textColor="@color/text"
+                android:textSize="41sp"
+                tools:text="아니오"></TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linear_btn_reserve"
+            android:background="@color/black">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffff"
+                    android:textSize="34sp"
+                    tools:text="421(저상) 버스를\n예약하시겠습니까?" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_medium"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffff"
+                    android:textSize="23sp"
+                    tools:text="소요시간 20분" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -9,13 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_eye_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".NoReservedMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".ReservedMainActivity" />
+        <activity android:name=".SearchDestinationActivity" />
+        <activity android:name=".SearchFavoritesActivity" />
+        <activity android:name=".DirectionsActivity" />
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".RegisterFavoritesActivity" />
+        <activity android:name=".CheckCurrentLocationActivity" />
+        <activity android:name=".SearchingForLocationActivity" />
+        <activity android:name=".ReserveActivity" />
+        <activity android:name=".CheckDestinationActivity"></activity>
     </application>
 
 </manifest>
