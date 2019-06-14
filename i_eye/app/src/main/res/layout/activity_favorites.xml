@@ -27,7 +27,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/rv_bookmarks_favorite"
+            android:id="@+id/linear_bookmarks_favorite"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -35,10 +35,10 @@
             app:layout_constraintBottom_toTopOf="@+id/linear_btn_favorite"
             android:background="@color/black">
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_bookmarks_favorite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
-            </android.support.v7.widget.RecyclerView>
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linear_btn_favorite"
