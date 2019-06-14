@@ -27,7 +27,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linear_bookmarks_favorite"
+            android:id="@+id/linear_bookmarks_favorites"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -38,7 +38,9 @@
                 android:id="@+id/rv_bookmarks_favorite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
+                >
+
+            </android.support.v7.widget.RecyclerView>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linear_btn_favorite"
@@ -48,6 +50,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/btn_register_favorites"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/orange"
@@ -55,7 +58,7 @@
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:textSize="45sp"
-                tools:text="등록"></TextView>
+                android:text="등록"></TextView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,7 +68,7 @@
                 android:gravity="center"
                 android:textColor="@color/text"
                 android:textSize="41sp"
-                tools:text="삭제"></TextView>
+                android:text="삭제"></TextView>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 

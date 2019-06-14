@@ -15,7 +15,7 @@
         android:fontFamily="@font/font_medium"
         android:textColor="#ffffff"
         android:textSize="32sp"
-        tools:text="광화문역"/>
+        android:text="광화문역"/>
     <ImageView
         android:id="@+id/iv_btn_place"
         android:layout_width="48dp"

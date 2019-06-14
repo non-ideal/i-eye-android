@@ -19,13 +19,14 @@
             android:fontFamily="@font/font_medium"
             android:textColor="#ffffff"
             android:textSize="35sp"
-            tools:text="길 찾기" />
+            android:text="길 찾기" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
+            android:id="@+id/btn_help_directions"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
@@ -49,10 +50,18 @@
                     android:lineSpacingExtra="20sp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_horizontal"
-                    tools:text="도움요청"
+                    android:text="도움요청"
                     />
             </LinearLayout>
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/mapview_directions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_help_directions"
+            android:background="@color/black"
+            android:orientation="vertical"></LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

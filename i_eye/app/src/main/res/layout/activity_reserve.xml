@@ -39,7 +39,7 @@
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:textSize="41sp"
-                tools:text="예"></TextView>
+                android:text="예"></TextView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:textColor="@color/text"
                 android:textSize="41sp"
-                tools:text="아니오"></TextView>
+                android:text="아니요"></TextView>
         </LinearLayout>
 
         <RelativeLayout
@@ -71,7 +71,7 @@
                     android:gravity="center_horizontal"
                     android:textColor="#ffffff"
                     android:textSize="34sp"
-                    tools:text="421(저상) 버스를\n예약하시겠습니까?" />
+                    android:text="421(저상) 버스를\n예약하시겠습니까?" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                     android:gravity="center_horizontal"
                     android:textColor="#ffffff"
                     android:textSize="23sp"
-                    tools:text="소요시간 20분" />
+                    android:text="소요시간 20분" />
             </LinearLayout>
         </RelativeLayout>
 

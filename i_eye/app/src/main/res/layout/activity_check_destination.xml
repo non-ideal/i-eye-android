@@ -32,6 +32,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/btn_yes_check_destination"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/orange"
@@ -39,9 +40,10 @@
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:textSize="41sp"
-                tools:text="예"></TextView>
+                android:text="예"></TextView>
 
             <TextView
+                android:id="@+id/btn_no_check_destination"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/gray"
@@ -49,7 +51,7 @@
                 android:gravity="center"
                 android:textColor="@color/text"
                 android:textSize="41sp"
-                tools:text="아니오"></TextView>
+                android:text="아니요"></TextView>
         </LinearLayout>
 
         <RelativeLayout
@@ -72,7 +74,7 @@
                     android:lineSpacingExtra="18sp"
                     android:textColor="#ffffff"
                     android:textSize="39sp"
-                    tools:text="목적지는" />
+                    android:text="목적지는" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -82,7 +84,7 @@
                     android:lineSpacingExtra="18sp"
                     android:textColor="#ffffff"
                     android:textSize="39sp"
-                    tools:text="시각장애인센터" />
+                    android:text="시각장애인센터" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -92,7 +94,7 @@
                     android:lineSpacingExtra="18sp"
                     android:textColor="#ffffff"
                     android:textSize="39sp"
-                    tools:text="입니다." />
+                    android:text="입니다." />
             </LinearLayout>
         </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.maas.soft.i_eye.ui
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -25,6 +26,11 @@ class FavoritesActivity : AppCompatActivity(), View.OnClickListener {
 
         rv_bookmarks_favorite.layoutManager = LinearLayoutManager(this)
         rv_bookmarks_favorite.adapter = placeAdapter
+
+
+        btn_register_favorites.setOnClickListener {
+            startActivity(Intent(this, SearchFavoritesActivity::class.java))
+        }
 
     }
 }
