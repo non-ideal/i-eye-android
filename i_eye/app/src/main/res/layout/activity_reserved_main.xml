@@ -16,7 +16,7 @@
             android:layout_width="96dp"
             android:layout_height="49dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/bm_i_eye" />
+            android:src="@drawable/ieye_logo" />
     </RelativeLayout>
 
     <RelativeLayout
