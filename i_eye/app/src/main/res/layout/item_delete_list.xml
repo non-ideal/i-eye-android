@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/const_whole_delete_place"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,9 +12,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="14dp"
+        android:clickable="false"
         android:button="@drawable/radio_button_list"/>
     <TextView
-        android:id="@+id/tv_name_place"
+        android:id="@+id/tv_name_delete_place"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
