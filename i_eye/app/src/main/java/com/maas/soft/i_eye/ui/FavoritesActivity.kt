@@ -9,15 +9,19 @@ import com.maas.soft.i_eye.R
 import kotlinx.android.synthetic.main.activity_favorites.*
 
 class FavoritesActivity : AppCompatActivity(), View.OnClickListener {
-    override fun onClick(v: View?) {
+    private val placeItems = ArrayList<String>()
+    private lateinit var placeAdapter: PlaceAdapter
 
+    override fun onClick(v: View?) {
+        val intent = Intent(this, CheckDestinationActivity::class.java)
+        intent.putExtra("Destination", placeItems[rv_bookmarks_favorite.getChildAdapterPosition(v!!)])
+        startActivity(intent)
+        finish()
     }
 
-    lateinit var placeAdapter: PlaceAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
-        val placeItems = ArrayList<String>()
         placeItems.add("광화문역")
         placeItems.add("시각장애인센터")
         placeItems.add("장애인 복지관")

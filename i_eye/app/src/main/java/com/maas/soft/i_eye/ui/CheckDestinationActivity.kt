@@ -7,10 +7,16 @@ import com.maas.soft.i_eye.R
 import kotlinx.android.synthetic.main.activity_check_destination.*
 
 class CheckDestinationActivity : AppCompatActivity() {
-
+    private var dest : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_destination)
+        dest = intent.getStringExtra("Destination")
+
+        if (dest!=null){
+            tv_dest_check_destination.text = intent.getStringExtra("Destination")
+        }
+
         setClickListener()
     }
 
@@ -21,8 +27,13 @@ class CheckDestinationActivity : AppCompatActivity() {
         }
 
         btn_no_check_destination.setOnClickListener {
-            val intent = Intent(applicationContext, SearchDestinationActivity::class.java)
-            startActivity(intent)
+            if (dest!=null){
+                startActivity(Intent(applicationContext, FavoritesActivity::class.java))
+                finish()
+            }else {
+                val intent = Intent(applicationContext, SearchDestinationActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

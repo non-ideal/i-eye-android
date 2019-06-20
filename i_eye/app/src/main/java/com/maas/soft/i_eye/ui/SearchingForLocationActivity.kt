@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.maas.soft.i_eye.R
 import kotlinx.android.synthetic.main.activity_searching_for_location.*
@@ -25,6 +24,7 @@ class SearchingForLocationActivity : AppCompatActivity() {
         handler.postDelayed({
             val intent = Intent(applicationContext, CheckCurrentLocationActivity::class.java)
             startActivity(intent)
+            finish()
         }, 1500)
     }
 }
