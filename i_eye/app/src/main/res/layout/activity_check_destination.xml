@@ -80,7 +80,7 @@
                     android:id="@+id/tv_dest_check_destination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="17dp"
                     android:fontFamily="@font/font_medium"
                     android:gravity="center_horizontal"
                     android:lineSpacingExtra="18sp"
@@ -91,7 +91,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="17dp"
                     android:fontFamily="@font/font_medium"
                     android:gravity="center_horizontal"
                     android:lineSpacingExtra="18sp"

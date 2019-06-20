@@ -17,15 +17,16 @@ class DirectionsActivity : AppCompatActivity() {
 
         val tMapView = TMapView(this)
         tMapView.setSKTMapApiKey("767dc065-35e7-4782-a787-202f73d8d976")
-        tMapView.setLocationPoint(126.970325,37.556152)
-        tMapView.setCenterPoint(126.970325,37.556152)
+        tMapView.setLocationPoint(126.9840825,37.5670949)
+        tMapView.setCenterPoint(126.9840825,37.5670949)
         tMapView.setCompassMode(false)
         tMapView.setIconVisibility(true)
-        tMapView.zoomLevel = 15
-        tMapView.mapType = TMapView.MAPTYPE_STANDARD  //일반지도
+        tMapView.zoomLevel = 17
+        tMapView.mapType = TMapView.MAPTYPE_HYBRID  //일반지도
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN)
         tMapView.setTrackingMode(false)
         tMapView.setSightVisible(false)
+        tMapView.contentDescription = "지도 영역입니다"
         mapview_directions.addView(tMapView)
     }
 
