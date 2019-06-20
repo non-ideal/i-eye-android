@@ -85,7 +85,7 @@
                     android:lineSpacingExtra="18sp"
                     android:textColor="#ffffff"
                     android:textSize="39sp"
-                    android:text="홍대 아이파크" />
+                    android:text="페럼타워" />
 
                 <TextView
                     android:layout_width="match_parent"
