@@ -18,9 +18,9 @@ class FavoritesActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
         val placeItems = ArrayList<String>()
-        placeItems.add("광화문")
-        placeItems.add("광화문")
-        placeItems.add("광화문")
+        placeItems.add("광화문역")
+        placeItems.add("시각장애인센터")
+        placeItems.add("장애인 복지관")
         placeAdapter = PlaceAdapter(placeItems)
         placeAdapter.setOnItemClickListener(this)
 
@@ -30,6 +30,10 @@ class FavoritesActivity : AppCompatActivity(), View.OnClickListener {
 
         btn_register_favorites.setOnClickListener {
             startActivity(Intent(this, SearchFavoritesActivity::class.java))
+        }
+
+        btn_delete_favorites.setOnClickListener {
+            startActivity(Intent(this, DeleteFavoritesActivity::class.java))
         }
 
     }
