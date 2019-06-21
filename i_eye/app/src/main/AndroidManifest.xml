@@ -57,8 +57,10 @@
         <activity
             android:name=".ui.CheckDestinationActivity"
             android:label="목적지 확인" />
-        <activity android:name=".ui.FavoritesVoiceInputActivity" />
-        <activity android:name=".ui.DestinationVoiceInputActivity"></activity>
+        <activity android:name=".ui.FavoritesVoiceInputActivity"
+            android:label="화면 아래를 누르고 목적지를 말씀해주세요"/>
+        <activity android:name=".ui.DestinationVoiceInputActivity"
+            android:label="화면 아래를 누르고 목적지를 말씀해주세요"></activity>
     </application>
 
 </manifest>
