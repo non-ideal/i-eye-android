@@ -40,8 +40,8 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
     }
 
     private fun setClickListener() {
-        cl_top_dest_search.setOnClickListener {
-            val intent = Intent(applicationContext, CheckDestinationActivity::class.java)
+        tv_voice_dest_search.setOnClickListener {
+            val intent = Intent(applicationContext, DestinationVoiceInputActivity::class.java)
             startActivity(intent)
         }
     }
