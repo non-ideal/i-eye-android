@@ -46,6 +46,7 @@
             <ImageButton
                 android:layout_width="166dp"
                 android:layout_height="166dp"
+                android:contentDescription="말씀하세요"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="48dp"
                 android:src="@drawable/icon_voice" />

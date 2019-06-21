@@ -28,10 +28,10 @@ class CheckDestinationActivity : AppCompatActivity() {
 
         btn_no_check_destination.setOnClickListener {
             if (dest!=null){
-                startActivity(Intent(applicationContext, FavoritesActivity::class.java))
+                startActivity(Intent(applicationContext, SearchDestinationActivity::class.java))
                 finish()
             }else {
-                val intent = Intent(applicationContext, SearchDestinationActivity::class.java)
+                val intent = Intent(applicationContext, FavoritesActivity::class.java)
                 startActivity(intent)
             }
         }
