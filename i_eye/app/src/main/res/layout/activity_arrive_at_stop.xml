@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_help_arrive_at_stop"
+        android:background="@color/black">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2분 후\n421(저상)\n버스 도착"
+                android:fontFamily="@font/font_medium"
+                android:textSize="36sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="4sp"
+                android:layout_marginBottom="33dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="탑승을 준비해주세요."
+                android:textSize="27sp"
+                android:fontFamily="@font/font_regular"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_help_arrive_at_stop"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:background="@color/light_gray"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/icon_help"
+                android:layout_marginLeft="4.5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/font_bold"
+                android:textSize="41sp"
+                android:textColor="@color/text"
+                android:lineSpacingExtra="20sp"
+                android:gravity="center_vertical"
+                android:text="도움요청"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+    
+</RelativeLayout>

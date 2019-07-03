@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AfterBoardingActivity">
+
+    <RelativeLayout
+        android:id="@+id/navi_bar_after_boarding"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/orange">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="49dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ieye_logo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/navi_bar_after_boarding"
+        android:layout_above="@+id/btn_get_off_after_boarding"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="14">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:layout_marginLeft="27dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="#ffffff"
+                    android:lineSpacingExtra="13sp"
+                    android:text="이번 정류장"
+                    android:layout_marginBottom="21dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/font_medium"
+                    android:lineSpacingExtra="15sp"
+                    android:layout_marginRight="27dp"
+                    android:gravity="right"
+                    android:text="녹사평역"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"></RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="14">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:layout_marginLeft="27dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="#ffffff"
+                    android:lineSpacingExtra="13sp"
+                    android:text="다음 정류장"
+                    android:layout_marginBottom="21dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/font_medium"
+                    android:lineSpacingExtra="15sp"
+                    android:layout_marginRight="27dp"
+                    android:gravity="right"
+                    android:text="용산구청"
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"></RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/font_regular"
+                android:lineSpacingExtra="13sp"
+                android:text="남은 정류장"
+                android:layout_marginLeft="27dp"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="39sp"
+                android:fontFamily="bold"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="18sp"
+                android:text="5"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="27dp"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_get_off_after_boarding"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:text="하차요청"
+        android:background="@color/light_gray"
+        android:textColor="@color/text"
+        android:textSize="41sp"
+        android:fontFamily="@font/font_bold"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

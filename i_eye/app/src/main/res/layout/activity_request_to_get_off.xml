@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RequestToGetOffActivity">
+
+    <RelativeLayout
+        android:id="@+id/navigation_bar_request_to_get_off"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/orange">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="49dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ieye_logo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/navigation_bar_request_to_get_off"
+        android:layout_above="@+id/btn_get_off_request_to_get_off"
+        android:background="@color/black">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <ImageView
+                android:id="@+id/iv_loading_request_to_get_off"
+                android:layout_width="129.7dp"
+                android:layout_height="147.2dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="53dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="29sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="14sp"
+                android:gravity="center"
+                android:fontFamily="@font/font_medium"
+                android:text="하차요청을 보내는 중.."
+                />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/btn_get_off_request_to_get_off"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_alignParentBottom="true"
+        android:textSize="41sp"
+        android:fontFamily="@font/font_bold"
+        android:textColor="@color/text"
+        android:lineSpacingExtra="20sp"
+        android:gravity="center"
+        android:text="하차완료"
+        android:background="@color/light_gray"/>
+
+</RelativeLayout>
