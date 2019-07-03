@@ -17,6 +17,8 @@ class CheckDestinationActivity : AppCompatActivity() {
             tv_dest_check_destination.text = intent.getStringExtra("Destination")
         }
 
+        // test
+
         setClickListener()
     }
 
