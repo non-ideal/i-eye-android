@@ -12,12 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_eye_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.Tutorial3Activity"></activity>
+        <activity android:name=".ui.Tutorial2Activity" />
+        <activity android:name=".ui.Tutorial1Activity" />
+        <activity android:name=".ui.CheckDestinationVoiceInputActivity" />
+        <activity android:name=".ui.CheckFavoritesVoiceInputActivity" />
         <activity
             android:name=".ui.DeleteFavoritesActivity"
             android:label="즐겨찾기 삭제" />
         <activity
             android:name=".ui.NoReservedMainActivity"
-            android:label="메인" />
+            android:label="예약된 버스가 없습니다." />
         <activity
             android:name=".ui.SplashActivity"
             android:label="">
@@ -32,7 +37,7 @@
             android:label="메인" />
         <activity
             android:name=".ui.SearchDestinationActivity"
-            android:label="목적지 검색" />
+            android:label="목적지의 정류장이나 버스 번호를 입력하세요." />
         <activity
             android:name=".ui.SearchFavoritesActivity"
             android:label="즐겨찾기 검색" />
@@ -41,7 +46,7 @@
             android:label="길찾기" />
         <activity
             android:name=".ui.FavoritesActivity"
-            android:label="즐겨찾기 목록" />
+            android:label="목적지 즐겨찾기 목록입니다." />
         <activity
             android:name=".ui.RegisterFavoritesActivity"
             android:label="즐겨찾기 등록" />
@@ -50,17 +55,19 @@
             android:label="현재위치 확인" />
         <activity
             android:name=".ui.SearchingForLocationActivity"
-            android:label="" />
+            android:label="사용자 위치를 검색중입니다." />
         <activity
             android:name=".ui.ReserveActivity"
             android:label="경로 선택" />
         <activity
             android:name=".ui.CheckDestinationActivity"
             android:label="목적지 확인" />
-        <activity android:name=".ui.FavoritesVoiceInputActivity"
-            android:label="화면 아래를 누르고 목적지를 말씀해주세요"/>
-        <activity android:name=".ui.DestinationVoiceInputActivity"
-            android:label="화면 아래를 누르고 목적지를 말씀해주세요"></activity>
+        <activity
+            android:name=".ui.FavoritesVoiceInputActivity"
+            android:label="화면 아래를 누르고 목적지를 말씀해주세요" />
+        <activity
+            android:name=".ui.DestinationVoiceInputActivity"
+            android:label="화면 아래를 누르고 목적지를 말씀해주세요" />
     </application>
 
 </manifest>

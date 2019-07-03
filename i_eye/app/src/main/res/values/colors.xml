@@ -4,5 +4,6 @@
     <color name="orange">#FF6C00</color>
     <color name="colorAccent">#FF6C00</color>
     <color name="gray"> #D6D7D7 </color>
+    <color name="light_gray">#f0f0f0</color>
     <color name="text"> #242424 </color>
 </resources>

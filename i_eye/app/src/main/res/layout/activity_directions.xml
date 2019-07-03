@@ -26,42 +26,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:id="@+id/btn_help_directions"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/black"
-            android:contentDescription="도움 요청">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerInParent="true">
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/icon_help"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="41sp"
-                    android:fontFamily="@font/font_bold"
-                    android:textColor="#ffffff"
-                    android:layout_marginLeft="4.5dp"
-                    android:lineSpacingExtra="20sp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_horizontal"
-                    android:text="도움요청"
-                    />
-            </LinearLayout>
-        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/mapview_directions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/btn_help_directions"
             android:background="@color/black"
             android:orientation="vertical"/>
     </RelativeLayout>
