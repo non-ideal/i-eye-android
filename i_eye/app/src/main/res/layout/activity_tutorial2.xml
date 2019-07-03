@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Tutorial2Activity">
+
+
+    <TextView
+        android:id="@+id/btn_next_tutorial2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="다음"
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_gray"
+        android:fontFamily="@font/font_medium"
+        android:textSize="41sp"
+        android:textColor="@color/text"
+        android:gravity="center"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_next_tutorial2"
+        android:background="@color/black">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="경적이 두 번\n울리는 버스에\n탑승하세요."
+                android:textSize="33sp"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/font_bold"
+                android:gravity="center"
+                android:lineSpacingExtra="16sp"
+                android:layout_marginBottom="30dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="버스 기사님은\n&quot;흰 지팡이를 소지한 승객을\n찾아 경적을 두 번 울려주세요&quot;\n라는 안내를 받습니다."
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:lineSpacingExtra="9sp"
+                android:fontFamily="@font/font_regular"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
