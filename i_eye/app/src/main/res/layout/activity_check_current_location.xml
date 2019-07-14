@@ -77,6 +77,7 @@
                     android:text="현재 위치는" />
 
                 <TextView
+                    android:id="@+id/tv_current_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
@@ -85,7 +86,7 @@
                     android:lineSpacingExtra="18sp"
                     android:textColor="#ffffff"
                     android:textSize="39sp"
-                    android:text="페럼타워" />
+                    android:text="" />
 
                 <TextView
                     android:layout_width="match_parent"
