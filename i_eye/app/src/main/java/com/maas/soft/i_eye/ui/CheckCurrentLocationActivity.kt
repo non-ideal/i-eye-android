@@ -29,11 +29,13 @@ class CheckCurrentLocationActivity : AppCompatActivity() {
 
             val intent = Intent(applicationContext, SearchDestinationActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         btn_no_check_current_location.setOnClickListener {
             val intent = Intent(applicationContext, SearchingForLocationActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

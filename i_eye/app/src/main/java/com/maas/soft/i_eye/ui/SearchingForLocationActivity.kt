@@ -41,7 +41,7 @@ class SearchingForLocationActivity : AppCompatActivity() {
     private fun getCurrentLoc() {
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
         var userLocation: Location = getLatLng()
-        if (userLocation != null) {
+        userLocation?.let {
             latitude = userLocation.latitude
             longitude = userLocation.longitude
             Log.d("CheckCurrentLocation", "현재 내 위치 값: $latitude, $longitude")
@@ -55,7 +55,7 @@ class SearchingForLocationActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-            if (mResultList != null) {
+            mResultList?.let {
                 Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
                 currentLocation = mResultList[0].getAddressLine(0)
                 currentLocation = currentLocation.substring(11)

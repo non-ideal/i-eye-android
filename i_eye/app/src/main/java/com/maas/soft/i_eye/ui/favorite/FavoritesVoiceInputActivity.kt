@@ -1,15 +1,15 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.favorite
 
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
 
-class Tutorial3Activity : AppCompatActivity() {
+class FavoritesVoiceInputActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tutorial3)
+        setContentView(R.layout.activity_favorites_voice_input)
         changeStatusBarColor()
     }
 
@@ -20,5 +20,4 @@ class Tutorial3Activity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.black)
         }
     }
-
 }

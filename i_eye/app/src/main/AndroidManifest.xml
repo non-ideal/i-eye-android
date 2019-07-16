@@ -21,13 +21,13 @@
         <activity android:name=".ui.RequestToHelpActivity" />
         <activity android:name=".ui.CheckToGetOffActivity" />
         <activity android:name=".ui.RequestToGetOffActivity" />
-        <activity android:name=".ui.Tutorial3Activity" />
-        <activity android:name=".ui.Tutorial2Activity" />
-        <activity android:name=".ui.Tutorial1Activity" />
+        <activity android:name=".ui.tutorial.Tutorial3Activity" />
+        <activity android:name=".ui.tutorial.Tutorial2Activity" />
+        <activity android:name=".ui.tutorial.Tutorial1Activity" />
         <activity android:name=".ui.CheckDestinationVoiceInputActivity" />
-        <activity android:name=".ui.CheckFavoritesVoiceInputActivity" />
+        <activity android:name=".ui.favorite.CheckFavoritesVoiceInputActivity" />
         <activity
-            android:name=".ui.DeleteFavoritesActivity"
+            android:name=".ui.favorite.DeleteFavoritesActivity"
             android:label="즐겨찾기 삭제" />
         <activity
             android:name=".ui.NoReservedMainActivity"
@@ -54,7 +54,7 @@
             android:name=".ui.DirectionsActivity"
             android:label="길찾기" />
         <activity
-            android:name=".ui.FavoritesActivity"
+            android:name=".ui.favorite.FavoritesActivity"
             android:label="목적지 즐겨찾기 목록입니다." />
         <activity
             android:name=".ui.RegisterFavoritesActivity"
@@ -72,7 +72,7 @@
             android:name=".ui.CheckDestinationActivity"
             android:label="목적지 확인" />
         <activity
-            android:name=".ui.FavoritesVoiceInputActivity"
+            android:name=".ui.favorite.FavoritesVoiceInputActivity"
             android:label="화면 아래를 누르고 목적지를 말씀해주세요" />
         <activity
             android:name=".ui.DestinationVoiceInputActivity"

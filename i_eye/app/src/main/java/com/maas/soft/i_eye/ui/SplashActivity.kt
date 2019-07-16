@@ -25,12 +25,12 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkFirstRun() {
-        var mPref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext);
+        var mPref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
         var firstRun = mPref.getBoolean("firstRun", true)
         if(firstRun) {
             var ANDROID_ID : String = Settings.Secure.getString(applicationContext.contentResolver, Settings.Secure.ANDROID_ID)
             //TODO 서버로 ANDROID_ID 전송
-            var editor : SharedPreferences.Editor = mPref.edit();
+            var editor : SharedPreferences.Editor = mPref.edit()
             editor.putBoolean("firstRun", false)
             editor.commit()
         }
