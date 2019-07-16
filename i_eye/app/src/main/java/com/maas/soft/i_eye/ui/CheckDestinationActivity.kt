@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
+import com.maas.soft.i_eye.ui.favorite.FavoritesActivity
 import kotlinx.android.synthetic.main.activity_check_destination.*
 
 class CheckDestinationActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class CheckDestinationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_check_destination)
         dest = intent.getStringExtra("Destination")
 
-        if (dest!=null){
+        dest?.let {
             tv_dest_check_destination.text = intent.getStringExtra("Destination")
         }
 
