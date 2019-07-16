@@ -7,7 +7,7 @@ import com.maas.soft.i_eye.R
 import com.maas.soft.i_eye.ui.favorite.FavoritesActivity
 import kotlinx.android.synthetic.main.activity_no_reserved_main.*
 
-class giNoReservedMainActivity : AppCompatActivity() {
+class NoReservedMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
