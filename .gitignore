@@ -46,3 +46,5 @@ i_eye/.externalNativeBuild
 # Google Services (e.g. APIs or Firebase)
 i_eye/google-services.json
 
+.DS_Store
+.idea/
