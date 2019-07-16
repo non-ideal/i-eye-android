@@ -8,6 +8,7 @@
     tools:context=".ui.DestinationVoiceInputActivity">
 
     <TextView
+        android:id="@+id/tv_voice_dest_input"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="215"
@@ -20,6 +21,7 @@
         android:textSize="35sp" />
 
     <RelativeLayout
+        android:id="@+id/btn_voice_dest_input"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="351"
