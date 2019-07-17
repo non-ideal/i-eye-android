@@ -39,9 +39,16 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
         val tMapView = TMapView(this)
         tMapView.setSKTMapApiKey("767dc065-35e7-4782-a787-202f73d8d976")
 
+        chkAgain()
         hideKeyboard()
         setClickListener()
         setRecyclerView()
+    }
+
+    private fun chkAgain() {
+        if (intent.getStringExtra("VOICE_DEST")!=null){
+            searchPOI(intent.getStringExtra("VOICE_DEST"))
+        }
     }
 
     private fun hideKeyboard() {
@@ -64,19 +71,23 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
         et_search_dest_search.setOnKeyListener { v, keyCode, event ->
             if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                 hideKeyboard()
-                object : Thread() {
-                    override fun run() {
-                        item = tmapdata.findAllPOI(et_search_dest_search.text.toString())?:ArrayList()
-                        for (i in 0 until item.size){
-                            placeItems.add(item[i].poiName)
-                        }
-                        handler.post(Runnable {
-                            placeAdapter.notifyDataSetChanged()
-                        })
-                    }
-                }.start()
+                searchPOI(et_search_dest_search.text.toString())
             }
             true
         }
+    }
+
+    private fun searchPOI(str: String) {
+        object : Thread() {
+            override fun run() {
+                item = tmapdata.findAllPOI(str)?:ArrayList()
+                for (i in 0 until item.size){
+                    placeItems.add(item[i].poiName)
+                }
+                handler.post(Runnable {
+                    placeAdapter.notifyDataSetChanged()
+                })
+            }
+        }.start()
     }
 }

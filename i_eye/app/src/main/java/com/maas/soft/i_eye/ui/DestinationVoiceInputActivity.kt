@@ -66,6 +66,7 @@ class DestinationVoiceInputActivity : AppCompatActivity() {
             val mIntent = Intent(applicationContext, CheckDestinationVoiceInputActivity::class.java)
             mIntent.putExtra("VOICE_DEST", dest)
             startActivity(mIntent)
+            finish()
         }
     }
 
