@@ -44,7 +44,7 @@
                 android:textColor="#363636"
                 android:textSize="30sp" />
 
-            <ImageButton
+            <ImageView
                 android:layout_width="166dp"
                 android:layout_height="166dp"
                 android:contentDescription="말씀하세요"

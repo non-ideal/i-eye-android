@@ -24,8 +24,10 @@
         <activity android:name=".ui.tutorial.Tutorial3Activity" />
         <activity android:name=".ui.tutorial.Tutorial2Activity" />
         <activity android:name=".ui.tutorial.Tutorial1Activity" />
-        <activity android:name=".ui.CheckDestinationVoiceInputActivity" />
-        <activity android:name=".ui.favorite.CheckFavoritesVoiceInputActivity" />
+        <activity android:name=".ui.CheckDestinationVoiceInputActivity"
+            android:label=""/>
+        <activity android:name=".ui.favorite.CheckFavoritesVoiceInputActivity"
+            android:label=""/>
         <activity
             android:name=".ui.favorite.DeleteFavoritesActivity"
             android:label="즐겨찾기 삭제" />
@@ -34,7 +36,7 @@
             android:label="예약된 버스가 없습니다." />
         <activity
             android:name=".ui.SplashActivity"
-            android:label="">
+            android:label="i-eye">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
