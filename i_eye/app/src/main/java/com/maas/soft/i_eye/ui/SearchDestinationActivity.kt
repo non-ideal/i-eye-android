@@ -12,6 +12,8 @@ import android.view.inputmethod.InputMethodManager
 import com.maas.soft.i_eye.R
 import com.skt.Tmap.TMapData
 import com.skt.Tmap.TMapPOIItem
+import com.skt.Tmap.TMapView
+import android.os.Handler
 
 
 class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
@@ -19,6 +21,7 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
     private lateinit var placeAdapter: PlaceAdapter
     private val tmapdata = TMapData()
     var item : ArrayList<TMapPOIItem> = ArrayList()
+    val handler = Handler()
 
     override fun onClick(v: View?) {
         val intent = Intent(this, CheckDestinationActivity::class.java)
@@ -28,17 +31,25 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
         // item[rv_search_dest_search.getChildAdapterPosition(v)].poiPoint
 
         startActivity(intent)
-        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_destination)
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(et_search_dest_search.windowToken, 0)
+        val tMapView = TMapView(this)
+        tMapView.setSKTMapApiKey("767dc065-35e7-4782-a787-202f73d8d976")
 
+        hideKeyboard()
         setClickListener()
+        setRecyclerView()
+    }
 
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(et_search_dest_search.windowToken, 0);
+    }
+
+    private fun setRecyclerView() {
         placeAdapter = PlaceAdapter(placeItems)
         placeAdapter.setOnItemClickListener(this)
         rv_search_dest_search.layoutManager = LinearLayoutManager(this)
@@ -51,13 +62,19 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
             startActivity(intent)
         }
         et_search_dest_search.setOnKeyListener { v, keyCode, event ->
-            // press enter
             if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                item = tmapdata.findAllPOI(et_search_dest_search.text.toString())
-                for (i in 0 until item.size){
-                    placeItems.add(item[i].poiName)
-                }
-                placeAdapter.notifyDataSetChanged()
+                hideKeyboard()
+                object : Thread() {
+                    override fun run() {
+                        item = tmapdata.findAllPOI(et_search_dest_search.text.toString())?:ArrayList()
+                        for (i in 0 until item.size){
+                            placeItems.add(item[i].poiName)
+                        }
+                        handler.post(Runnable {
+                            placeAdapter.notifyDataSetChanged()
+                        })
+                    }
+                }.start()
             }
             true
         }

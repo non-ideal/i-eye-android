@@ -1,6 +1,7 @@
 package com.maas.soft.i_eye.ui
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
@@ -29,8 +30,7 @@ class CheckDestinationActivity : AppCompatActivity() {
 
         btn_no_check_destination.setOnClickListener {
             if (dest!=null){
-                startActivity(Intent(applicationContext, SearchDestinationActivity::class.java))
-                finish()
+                super.onBackPressed()
             }else {
                 val intent = Intent(applicationContext, FavoritesActivity::class.java)
                 startActivity(intent)
