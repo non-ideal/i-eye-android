@@ -51,7 +51,7 @@
                 android:maxLines="1"
                 android:inputType="text"
                 android:scrollHorizontally="true"
-                android:hint="목적지를 입력해주세요."
+                android:hint="장소를 입력해주세요."
                 android:fontFamily="@font/font_medium"
                 android:textColor="#ffffff"
                 android:textColorHint="#fff"
