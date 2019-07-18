@@ -23,7 +23,11 @@ class PlaceAdapter(var placeItems: ArrayList<String>) : RecyclerView.Adapter<Pla
     override fun getItemCount(): Int = placeItems.size
 
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
-        holder.placeName.text = placeItems[position]
+        if (placeItems[position].length > 10)
+            holder.placeName.text = placeItems[position].substring(0,8) + "..."
+        else
+            holder.placeName.text = placeItems[position]
+        holder.placeName.contentDescription = placeItems[position]
     }
 
 }

@@ -8,7 +8,6 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.view.MotionEvent
 import kotlinx.android.synthetic.main.activity_destination_voice_input.*
-import android.widget.Toast
 import android.speech.RecognitionListener
 import com.maas.soft.i_eye.R
 import android.Manifest.permission.RECORD_AUDIO
@@ -30,7 +29,7 @@ class DestinationVoiceInputActivity : AppCompatActivity() {
         }
 
         override fun onBeginningOfSpeech() {
-            Toast.makeText(applicationContext, "지금부터 말을 해주세요!", Toast.LENGTH_SHORT).show()
+            println("startSpeech.........................")
         }
 
         override fun onRmsChanged(rmsdB: Float) {
@@ -46,7 +45,7 @@ class DestinationVoiceInputActivity : AppCompatActivity() {
         }
 
         override fun onError(error: Int) {
-            Toast.makeText(applicationContext, "천천히 다시 말해주세요.", Toast.LENGTH_SHORT).show()
+            println("error.........................")
         }
 
         override fun onPartialResults(partialResults: Bundle) {
@@ -58,14 +57,16 @@ class DestinationVoiceInputActivity : AppCompatActivity() {
         }
 
         override fun onResults(results: Bundle) {
-            var key = ""
-            key = SpeechRecognizer.RESULTS_RECOGNITION
+            val key = SpeechRecognizer.RESULTS_RECOGNITION
             val mResult = results.getStringArrayList(key)
             val rs = arrayOfNulls<String>(mResult!!.size)
             mResult.toArray(rs)
             dest = rs[0] ?: "인식 실패"
-            Toast.makeText(applicationContext, dest, Toast.LENGTH_SHORT).show()
-            mRecognizer.startListening(i)
+
+            val mIntent = Intent(applicationContext, CheckDestinationVoiceInputActivity::class.java)
+            mIntent.putExtra("VOICE_DEST", dest)
+            startActivity(mIntent)
+            finish()
         }
     }
 
@@ -75,6 +76,8 @@ class DestinationVoiceInputActivity : AppCompatActivity() {
         setContentView(R.layout.activity_destination_voice_input)
         changeStatusBarColor()
         setBtnListener()
+
+        // set STT
         i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, this.packageName)
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR")
         mRecognizer = SpeechRecognizer.createSpeechRecognizer(this)
@@ -104,13 +107,6 @@ class DestinationVoiceInputActivity : AppCompatActivity() {
                             e.printStackTrace()
                         }
                     }
-
-                    true
-                }
-                MotionEvent.ACTION_UP -> {
-                    var mIntent = Intent(this, CheckDestinationVoiceInputActivity::class.java)
-                    mIntent.putExtra("VOICE_DEST", dest)
-                    startActivity(mIntent)
                     true
                 }
                 else -> true

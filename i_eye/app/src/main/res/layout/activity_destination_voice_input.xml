@@ -17,6 +17,7 @@
         android:gravity="center"
         android:lineSpacingExtra="17sp"
         android:text="목적지를\n말씀해주세요."
+        android:contentDescription="하단의 버튼을 누른 후 띵동소리가 나면 목적지를 말씀해주세요."
         android:textColor="#ffffff"
         android:textSize="35sp" />
 
@@ -25,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="351"
-        android:contentDescription="말씀하세요"
+        android:contentDescription="여기를 누른 후 말씀하세요"
         android:background="@color/gray">
 
         <LinearLayout
@@ -45,10 +46,10 @@
                 android:textColor="#363636"
                 android:textSize="30sp" />
 
-            <ImageButton
+            <ImageView
                 android:layout_width="166dp"
                 android:layout_height="166dp"
-                android:contentDescription="말씀하세요"
+                android:contentDescription=""
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="48dp"
                 android:src="@drawable/icon_voice" />
