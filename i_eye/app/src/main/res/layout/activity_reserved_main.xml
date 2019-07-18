@@ -24,6 +24,7 @@
         android:layout_height="match_parent">
 
 
+
         <LinearLayout
             android:id="@+id/linear_btn_reserved_main"
             android:layout_width="match_parent"
@@ -60,16 +61,71 @@
             android:layout_above="@+id/linear_btn_reserved_main"
             android:background="@color/black">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/font_medium"
-                android:gravity="center"
-                android:lineSpacingExtra="20sp"
-                android:textColor="#ffffff"
-                android:textSize="41sp"
-                android:text="421(저상) 버스\n예약 되었습니다." />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_bus_number_reserved_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center"
+                        android:lineSpacingExtra="20sp"
+                        android:textColor="#ffffff"
+                        android:textSize="41sp"
+                        android:text="" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center"
+                        android:lineSpacingExtra="20sp"
+                        android:textColor="#ffffff"
+                        android:textSize="41sp"
+                        android:text="(" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center"
+                        android:lineSpacingExtra="20sp"
+                        android:textColor="#ffffff"
+                        android:textSize="41sp"
+                        android:text="저상" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center"
+                        android:lineSpacingExtra="20sp"
+                        android:textColor="#ffffff"
+                        android:textSize="41sp"
+                        android:text=") 버스" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/font_medium"
+                    android:gravity="center"
+                    android:layout_marginTop="20sp"
+                    android:textColor="#ffffff"
+                    android:textSize="41sp"
+                    android:text="예약 되었습니다." />
+
+            </LinearLayout>
+
         </RelativeLayout>
 
     </RelativeLayout>

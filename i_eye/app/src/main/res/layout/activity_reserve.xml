@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.RegisterFavoritesActivity">
+    tools:context=".ui.ReserveActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -32,6 +32,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/btn_yes_reserve"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/orange"
@@ -42,6 +43,7 @@
                 android:text="예"></TextView>
 
             <TextView
+                android:id="@+id/btn_no_reserve"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@color/gray"
@@ -64,6 +66,46 @@
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_bus_number_reserve"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center_horizontal"
+                        android:textColor="#ffffff"
+                        android:textSize="34sp"
+                        android:text="" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center_horizontal"
+                        android:textColor="#ffffff"
+                        android:textSize="34sp"
+                        android:text="(" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center_horizontal"
+                        android:textColor="#ffffff"
+                        android:textSize="34sp"
+                        android:text="저상" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_medium"
+                        android:gravity="center_horizontal"
+                        android:textColor="#ffffff"
+                        android:textSize="34sp"
+                        android:text=") 버스를" />
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,7 +113,7 @@
                     android:gravity="center_horizontal"
                     android:textColor="#ffffff"
                     android:textSize="34sp"
-                    android:text="421(저상) 버스를\n예약하시겠습니까?" />
+                    android:text="예약하시겠습니까?" />
 
                 <TextView
                     android:layout_width="match_parent"

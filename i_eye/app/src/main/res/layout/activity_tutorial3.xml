@@ -10,7 +10,7 @@
         android:id="@+id/btn_next_tutorial3"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="다음"
+        android:text="시작"
         android:layout_alignParentBottom="true"
         android:background="@color/light_gray"
         android:fontFamily="@font/font_medium"

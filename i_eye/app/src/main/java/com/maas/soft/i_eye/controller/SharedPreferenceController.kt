@@ -10,10 +10,12 @@ object SharedPreferenceController {
 
     private val FIRST_RUN : String = "first_run"
     private val ANDROID_ID : String = "android_id"
+    private val STATUS : Int = 0
     private val START_LAT : String = "start_lat"
     private val START_LNG : String = "start_lng"
     private val DESTINATION_LAT : String = "destination_lat"
     private val DESTINATION_LNG : String = "destination_lng"
+    private val BUS_NUMBER : String = "bus_number"
     private val CLEAR_ALL : String = "clear_all"
 
     /**
@@ -111,6 +113,22 @@ object SharedPreferenceController {
     fun getDestinationLng(ctx : Context) : Double {
         val preferences : SharedPreferences = ctx.getSharedPreferences(DESTINATION_LNG, MODE_PRIVATE)
         return preferences.getFloat(DESTINATION_LNG, 0.0F).toDouble()
+    }
+
+    /**
+     * BUS_NUMBER
+     * String
+     */
+    fun setBusNumber(ctx : Context, input_bus_num : String) {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(BUS_NUMBER, MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = preferences.edit()
+        editor.putString(BUS_NUMBER, input_bus_num)
+        editor.commit()
+    }
+
+    fun getBusNumber(ctx : Context) : String {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(BUS_NUMBER, MODE_PRIVATE)
+        return preferences.getString(BUS_NUMBER, "")
     }
 
     /**

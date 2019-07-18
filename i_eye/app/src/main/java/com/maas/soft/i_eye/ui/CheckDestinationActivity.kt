@@ -24,7 +24,7 @@ class CheckDestinationActivity : AppCompatActivity() {
 
     private fun setClickListener() {
         btn_yes_check_destination.setOnClickListener {
-            val intent = Intent(applicationContext, ReservedMainActivity::class.java)
+            val intent = Intent(applicationContext, ReserveActivity::class.java)
             startActivity(intent)
         }
 

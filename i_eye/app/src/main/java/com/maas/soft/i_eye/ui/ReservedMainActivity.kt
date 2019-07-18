@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
+import com.maas.soft.i_eye.controller.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_reserved_main.*
 
 class ReservedMainActivity : AppCompatActivity() {
@@ -12,6 +13,7 @@ class ReservedMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reserved_main)
         setClickListener()
+        tv_bus_number_reserved_main.text = SharedPreferenceController.getBusNumber(this)
     }
 
     private fun setClickListener() {
