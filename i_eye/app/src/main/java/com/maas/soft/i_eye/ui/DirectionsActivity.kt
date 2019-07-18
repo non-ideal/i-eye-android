@@ -1,7 +1,6 @@
 package com.maas.soft.i_eye.ui
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -11,9 +10,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.maas.soft.i_eye.R
+import com.maas.soft.i_eye.model.PathResDto
+import com.maas.soft.i_eye.network.ApplicationController
+import com.maas.soft.i_eye.network.NetworkService
 import com.skt.Tmap.TMapView
 import kotlinx.android.synthetic.main.activity_directions.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class DirectionsActivity : AppCompatActivity() {
@@ -22,9 +30,12 @@ class DirectionsActivity : AppCompatActivity() {
     private var latitude : Double? = null
     private var longitude : Double? = null
 
+    private var networkService: NetworkService = ApplicationController.instance.networkService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_directions)
+        getPathResponse()
         changeStatusBarColor()
         getLatLng()
 
@@ -69,5 +80,46 @@ class DirectionsActivity : AppCompatActivity() {
         else {
             window.statusBarColor = resources.getColor(R.color.black)
         }
+    }
+
+    private fun getPathResponse() {
+        var jsonObject = JSONObject()
+        jsonObject.put("endX", 127.09404734529575)
+        jsonObject.put("endY", 37.50612432766213)
+        jsonObject.put("startX", 127.08370508148472)
+        jsonObject.put("startY", 37.52946809068537)
+
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+        val getPathResponse = networkService.getPathResponse(gsonObject)
+
+        getPathResponse!!.enqueue(object : Callback<List<PathResDto>> {
+            override fun onFailure(call: Call<List<PathResDto>>, t: Throwable) {
+                Log.d("Log::LoginActivity", t.message)
+                Log.d("Log::LoginActivity","onFailure")
+
+            }
+            override fun onResponse(call: Call<List<PathResDto>>, response: Response<List<PathResDto>>) {
+                response?.let {
+                    when (it.code()) {
+                        200 -> {
+                            Log.d("Log::LoginActivity","200")
+                            Log.d("Log::LoginActivity", response.body().toString())
+                        }
+                        403 -> {
+                            Log.d("Log::LoginActivity","403")
+
+                        }
+                        500 -> {
+                            Log.d("Log::LoginActivity","500")
+
+                        }
+                        else -> {
+                            Log.d("Log::LoginActivity","else")
+                        }
+                    }
+                }
+            }
+
+        })
     }
 }
