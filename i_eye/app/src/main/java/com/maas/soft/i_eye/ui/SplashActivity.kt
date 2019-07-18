@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.provider.Settings
+import com.maas.soft.i_eye.controller.SharedPreferenceController
 import java.util.*
 
 
@@ -25,14 +26,12 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkFirstRun() {
-        var mPref : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-        var firstRun = mPref.getBoolean("firstRun", true)
+        var firstRun = SharedPreferenceController.getFirstRun(this)
         if(firstRun) {
             var ANDROID_ID : String = Settings.Secure.getString(applicationContext.contentResolver, Settings.Secure.ANDROID_ID)
+            SharedPreferenceController.setAndroidID(this, ANDROID_ID)
             //TODO 서버로 ANDROID_ID 전송
-            var editor : SharedPreferences.Editor = mPref.edit()
-            editor.putBoolean("firstRun", false)
-            editor.commit()
+            SharedPreferenceController.setFirstRun(this, false)
         }
     }
 

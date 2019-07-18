@@ -14,6 +14,7 @@ import com.skt.Tmap.TMapData
 import com.skt.Tmap.TMapPOIItem
 import com.skt.Tmap.TMapView
 import android.os.Handler
+import com.maas.soft.i_eye.controller.SharedPreferenceController
 
 
 class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
@@ -27,8 +28,8 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
         val intent = Intent(this, CheckDestinationActivity::class.java)
         intent.putExtra("Destination", placeItems[rv_search_dest_search.getChildAdapterPosition(v!!)])
 
-        // TODO save destination coord
-        // item[rv_search_dest_search.getChildAdapterPosition(v)].poiPoint
+        SharedPreferenceController.setDestinationLat(this, item[rv_search_dest_search.getChildAdapterPosition(v)].poiPoint.latitude)
+        SharedPreferenceController.setDestinationLng(this, item[rv_search_dest_search.getChildAdapterPosition(v)].poiPoint.longitude)
 
         startActivity(intent)
     }

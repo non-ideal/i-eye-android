@@ -1,18 +1,13 @@
 package com.maas.soft.i_eye.ui
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
 import android.util.Log
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.maas.soft.i_eye.R
+import com.maas.soft.i_eye.controller.SharedPreferenceController
 import com.maas.soft.i_eye.model.PathResDto
 import com.maas.soft.i_eye.network.ApplicationController
 import com.maas.soft.i_eye.network.NetworkService
@@ -26,18 +21,19 @@ import retrofit2.Response
 
 class DirectionsActivity : AppCompatActivity() {
 
-    private val REQUEST_CODE_LOCATION : Int = 2
     private var latitude : Double? = null
     private var longitude : Double? = null
+    private var desLatitude : Double? = null
+    private var desLongitude : Double? = null
 
     private var networkService: NetworkService = ApplicationController.instance.networkService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_directions)
+        getLatLng()
         getPathResponse()
         changeStatusBarColor()
-        getLatLng()
 
         val tMapView = TMapView(this)
         tMapView.setSKTMapApiKey("767dc065-35e7-4782-a787-202f73d8d976")
@@ -56,21 +52,10 @@ class DirectionsActivity : AppCompatActivity() {
     }
 
     private fun getLatLng() {
-        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        var currentLatLng : Location? = null
-
-        if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), this.REQUEST_CODE_LOCATION)
-            getLatLng()
-        } else {
-            val locationProvider = LocationManager.GPS_PROVIDER
-            currentLatLng = locationManager?.getLastKnownLocation(locationProvider)
-        }
-        currentLatLng?.let {
-            latitude = currentLatLng.latitude
-            longitude = currentLatLng.longitude
-        }
+        latitude = SharedPreferenceController.getStartLat(this)
+        longitude = SharedPreferenceController.getStartLng(this)
+        desLatitude = SharedPreferenceController.getDestinationLat(this)
+        desLongitude = SharedPreferenceController.getDestinationLng(this)
     }
 
     private fun changeStatusBarColor() {
@@ -84,10 +69,10 @@ class DirectionsActivity : AppCompatActivity() {
 
     private fun getPathResponse() {
         var jsonObject = JSONObject()
-        jsonObject.put("endX", 127.09404734529575)
-        jsonObject.put("endY", 37.50612432766213)
-        jsonObject.put("startX", 127.08370508148472)
-        jsonObject.put("startY", 37.52946809068537)
+        jsonObject.put("endX", desLongitude)
+        jsonObject.put("endY", desLatitude)
+        jsonObject.put("startX", longitude)
+        jsonObject.put("startY", latitude)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         val getPathResponse = networkService.getPathResponse(gsonObject)

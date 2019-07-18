@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.maas.soft.i_eye.controller.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_check_current_location.*
 
 class CheckCurrentLocationActivity : AppCompatActivity() {
@@ -23,9 +24,11 @@ class CheckCurrentLocationActivity : AppCompatActivity() {
 
     private fun setClickListener() {
         btn_yes_check_current_location.setOnClickListener {
-            //TODO 서버로 현재 위치 위도, 경도 보내기
             var latitude : Double = intent.getDoubleExtra("latitude", 0.0)
             var longitude : Double = intent.getDoubleExtra("longitude", 0.0)
+
+            SharedPreferenceController.setStartLat(this, latitude)
+            SharedPreferenceController.setStartLng(this, longitude)
 
             val intent = Intent(applicationContext, SearchDestinationActivity::class.java)
             startActivity(intent)
