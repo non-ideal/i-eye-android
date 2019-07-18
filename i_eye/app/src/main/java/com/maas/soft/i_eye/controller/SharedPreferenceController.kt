@@ -3,6 +3,9 @@ package com.maas.soft.i_eye.controller
 import android.content.Context
 import android.content.SharedPreferences
 import android.view.TextureView
+import android.content.Context.MODE_PRIVATE
+
+
 
 object SharedPreferenceController {
 
@@ -108,6 +111,13 @@ object SharedPreferenceController {
     fun getDestinationLng(ctx : Context) : Double {
         val preferences : SharedPreferences = ctx.getSharedPreferences(DESTINATION_LNG, Context.MODE_PRIVATE)
         return preferences.getFloat(DESTINATION_LNG, 0.0F).toDouble()
+    }
+
+    fun clearAll(ctx : Context) {
+        val preferences : SharedPreferences = ctx.getSharedPreferences("clear_all", MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = preferences.edit()
+        editor.clear()
+        editor.commit()
     }
 
 }

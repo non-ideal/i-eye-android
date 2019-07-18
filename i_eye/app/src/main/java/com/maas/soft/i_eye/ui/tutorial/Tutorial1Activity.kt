@@ -5,7 +5,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
-import kotlinx.android.synthetic.main.activity_tutorial2.*
+import kotlinx.android.synthetic.main.activity_tutorial1.*
 
 class Tutorial1Activity : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class Tutorial1Activity : AppCompatActivity() {
     }
 
     private fun setClickListener() {
-        btn_next_tutorial2.setOnClickListener {
+        btn_next_tutorial1.setOnClickListener {
             val intent = Intent(applicationContext, Tutorial2Activity::class.java)
             startActivity(intent)
         }

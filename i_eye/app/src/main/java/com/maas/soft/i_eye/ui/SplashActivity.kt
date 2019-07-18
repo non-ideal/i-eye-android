@@ -10,6 +10,7 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.provider.Settings
 import com.maas.soft.i_eye.controller.SharedPreferenceController
+import com.maas.soft.i_eye.ui.tutorial.Tutorial1Activity
 import java.util.*
 
 
@@ -19,20 +20,26 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+//        SharedPreferenceController.clearAll(this)
         checkFirstRun()
         changeStatusBarColor()
-        moveToNextActivity()
-
     }
 
     private fun checkFirstRun() {
         var firstRun = SharedPreferenceController.getFirstRun(this)
+        lateinit var intent : Intent
         if(firstRun) {
             var ANDROID_ID : String = Settings.Secure.getString(applicationContext.contentResolver, Settings.Secure.ANDROID_ID)
             SharedPreferenceController.setAndroidID(this, ANDROID_ID)
             //TODO 서버로 ANDROID_ID 전송
             SharedPreferenceController.setFirstRun(this, false)
+            //TODO 예약 상태에 따라 화면 이동
+            intent = Intent(applicationContext, NoReservedMainActivity::class.java)
         }
+        else {
+            intent = Intent(applicationContext, Tutorial1Activity::class.java)
+        }
+        moveToNextActivity(intent)
     }
 
     private fun changeStatusBarColor() {
@@ -43,10 +50,9 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun moveToNextActivity() {
+    private fun moveToNextActivity(intent : Intent) {
         val handler = Handler()
         handler.postDelayed({
-            val intent = Intent(applicationContext, NoReservedMainActivity::class.java)
             startActivity(intent)
             finish()
         }, 1500)
