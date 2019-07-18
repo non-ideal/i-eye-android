@@ -37,7 +37,6 @@ class DirectionsActivity : AppCompatActivity() {
 
         val tMapView = TMapView(this)
         tMapView.setSKTMapApiKey("767dc065-35e7-4782-a787-202f73d8d976")
-        Log.d("@@@", "$latitude, $longitude")
         tMapView.setLocationPoint(longitude!!,latitude!!)
         tMapView.setCenterPoint(longitude!!,latitude!!)
         tMapView.setCompassMode(false)
@@ -56,6 +55,8 @@ class DirectionsActivity : AppCompatActivity() {
         longitude = SharedPreferenceController.getStartLng(this)
         desLatitude = SharedPreferenceController.getDestinationLat(this)
         desLongitude = SharedPreferenceController.getDestinationLng(this)
+
+        Log.d("길찾기 좌표 확인", "현재 ($longitude, $latitude) / 목적지 ($desLongitude, $desLatitude)")
     }
 
     private fun changeStatusBarColor() {
@@ -79,27 +80,26 @@ class DirectionsActivity : AppCompatActivity() {
 
         getPathResponse!!.enqueue(object : Callback<List<PathResDto>> {
             override fun onFailure(call: Call<List<PathResDto>>, t: Throwable) {
-                Log.d("Log::LoginActivity", t.message)
-                Log.d("Log::LoginActivity","onFailure")
-
+                Log.d("pathResponse 호출: ","onFailure")
+                Log.d("pathResponse 에러: ", t.message)
             }
             override fun onResponse(call: Call<List<PathResDto>>, response: Response<List<PathResDto>>) {
                 response?.let {
                     when (it.code()) {
                         200 -> {
-                            Log.d("Log::LoginActivity","200")
-                            Log.d("Log::LoginActivity", response.body().toString())
+                            Log.d("pathResponse 상태 코드: ","200")
+                            Log.d("pathResponse 결과: ", response.body().toString())
                         }
                         403 -> {
-                            Log.d("Log::LoginActivity","403")
+                            Log.d("pathResponse 상태 코드: ","403")
 
                         }
                         500 -> {
-                            Log.d("Log::LoginActivity","500")
+                            Log.d("pathResponse 상태 코드: ","500")
 
                         }
                         else -> {
-                            Log.d("Log::LoginActivity","else")
+                            Log.d("pathResponse 상태 코드: ", it.code().toString())
                         }
                     }
                 }
