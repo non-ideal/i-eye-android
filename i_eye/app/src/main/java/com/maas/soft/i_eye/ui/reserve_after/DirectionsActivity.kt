@@ -47,6 +47,7 @@ class DirectionsActivity : AppCompatActivity() {
     private var desLongitude : Double = 0.0
 
     private var paths : ArrayList<PathResDto> = ArrayList()
+    private var pathCnt = 0
 
     private var networkService: NetworkService = ApplicationController.instance.networkService
 
@@ -116,8 +117,13 @@ class DirectionsActivity : AppCompatActivity() {
     }
 
     private fun chkPoint() {
-        // TODO 현재 위치가 어떤 POINT 근방(경도 위도 +-0.0002)이라면 description 안내 메세지 TTS
-        // TODO 다음 경로 안내 TTS (ex. 이어서 직진 300m입니다.)
+        for (i in pathCnt until paths.size){
+            if(paths[i].type==Type.POINT && paths[i].turnType!="일반" && paths[i].y-0.0001 <= latitude && latitude <= paths[i].y+0.0001 && paths[i].x-0.0001 <= longitude && longitude <= paths[i].x+0.0001){
+                tts.speak("여기서 ${paths[i].turnType} 하십시오.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+                pathCnt = i
+                break
+            }
+        }
     }
 
     private fun getLatLng() {
@@ -130,7 +136,7 @@ class DirectionsActivity : AppCompatActivity() {
     }
 
     private fun getTMap() {
-        tMapView = TMapView(this, 5)
+        tMapView = TMapView(this)
         tMapView.setSKTMapApiKey("767dc065-35e7-4782-a787-202f73d8d976")
         tMapView.setLocationPoint(longitude!!,latitude!!)
         tMapView.setCenterPoint(longitude!!,latitude!!)
