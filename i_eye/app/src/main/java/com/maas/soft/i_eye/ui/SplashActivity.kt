@@ -21,7 +21,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        Log.d("@@@@@@", "왜 안됨?????")
 
 //        SharedPreferenceController.clearAll(this)
         checkFirstRun()
