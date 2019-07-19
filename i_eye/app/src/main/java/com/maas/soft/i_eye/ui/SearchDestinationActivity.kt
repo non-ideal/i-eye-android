@@ -14,6 +14,7 @@ import com.skt.Tmap.TMapData
 import com.skt.Tmap.TMapPOIItem
 import com.skt.Tmap.TMapView
 import android.os.Handler
+import android.support.v7.widget.RecyclerView
 import com.maas.soft.i_eye.controller.SharedPreferenceController
 
 
@@ -60,7 +61,7 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
     private fun setRecyclerView() {
         placeAdapter = PlaceAdapter(placeItems)
         placeAdapter.setOnItemClickListener(this)
-        rv_search_dest_search.layoutManager = LinearLayoutManager(this)
+        rv_search_dest_search.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
         rv_search_dest_search.adapter = placeAdapter
     }
 

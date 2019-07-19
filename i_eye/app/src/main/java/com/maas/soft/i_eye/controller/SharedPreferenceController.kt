@@ -11,6 +11,10 @@ object SharedPreferenceController {
     private val FIRST_RUN : String = "first_run"
     private val PHONE_NUM : String = "android_id"
     private val STATUS : Int = 0
+    /*
+    0: 예약 내역 없음
+    1: 
+     */
     private val START_LAT : String = "start_lat"
     private val START_LNG : String = "start_lng"
     private val DESTINATION_LAT : String = "destination_lat"
