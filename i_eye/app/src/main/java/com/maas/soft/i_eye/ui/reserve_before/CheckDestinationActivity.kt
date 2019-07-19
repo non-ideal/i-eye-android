@@ -1,7 +1,6 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_before
 
 import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R

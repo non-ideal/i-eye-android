@@ -1,6 +1,5 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_after
 
-import android.Manifest
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -31,6 +30,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.speech.tts.TextToSpeech
 import com.maas.soft.i_eye.model.Type
+import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import java.util.*
 import kotlin.collections.ArrayList
 

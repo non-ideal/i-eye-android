@@ -1,4 +1,4 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_before
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity

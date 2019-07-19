@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.maas.soft.i_eye.R
-import com.maas.soft.i_eye.ui.CheckDestinationActivity
-import com.maas.soft.i_eye.ui.PlaceAdapter
-import com.maas.soft.i_eye.ui.SearchFavoritesActivity
+import com.maas.soft.i_eye.ui.reserve_before.CheckDestinationActivity
+import com.maas.soft.i_eye.ui.reserve_before.PlaceAdapter
 import kotlinx.android.synthetic.main.activity_favorites.*
 
 class FavoritesActivity : AppCompatActivity(), View.OnClickListener {

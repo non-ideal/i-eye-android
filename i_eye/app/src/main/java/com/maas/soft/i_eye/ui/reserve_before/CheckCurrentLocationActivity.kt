@@ -1,9 +1,8 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_before
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.maas.soft.i_eye.controller.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_check_current_location.*
 

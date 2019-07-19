@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.NoReservedMainActivity">
+    tools:context=".ui.reserve_before.NoReservedMainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

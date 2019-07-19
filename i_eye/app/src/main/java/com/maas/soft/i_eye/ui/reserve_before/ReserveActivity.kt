@@ -1,4 +1,4 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_before
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -11,6 +11,7 @@ import com.maas.soft.i_eye.controller.SharedPreferenceController
 import com.maas.soft.i_eye.model.PathResDto
 import com.maas.soft.i_eye.network.ApplicationController
 import com.maas.soft.i_eye.network.NetworkService
+import com.maas.soft.i_eye.ui.reserve_after.ReservedMainActivity
 import kotlinx.android.synthetic.main.activity_reserve.*
 import org.json.JSONObject
 import retrofit2.Call

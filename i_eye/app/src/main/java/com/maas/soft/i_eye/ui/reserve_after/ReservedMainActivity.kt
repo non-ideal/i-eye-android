@@ -1,10 +1,11 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_after
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
 import com.maas.soft.i_eye.controller.SharedPreferenceController
+import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import kotlinx.android.synthetic.main.activity_reserved_main.*
 
 class ReservedMainActivity : AppCompatActivity() {

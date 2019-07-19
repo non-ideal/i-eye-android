@@ -1,4 +1,4 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.favorite
 
 data class PlaceDeleteData (
         var boolean:Boolean,

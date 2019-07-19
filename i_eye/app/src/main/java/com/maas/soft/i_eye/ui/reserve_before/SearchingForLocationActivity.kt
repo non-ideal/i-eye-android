@@ -1,4 +1,4 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_before
 
 import android.Manifest
 import android.content.Context
@@ -10,12 +10,10 @@ import android.location.Location
 import android.location.LocationManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.ActivityCompat
 import android.util.Log
 import com.bumptech.glide.Glide
 import com.maas.soft.i_eye.R
-import kotlinx.android.synthetic.main.activity_check_current_location.*
 import kotlinx.android.synthetic.main.activity_searching_for_location.*
 import java.io.IOException
 import java.util.*

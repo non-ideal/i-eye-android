@@ -1,10 +1,9 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.favorite
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
-import com.maas.soft.i_eye.ui.favorite.FavoritesVoiceInputActivity
 import kotlinx.android.synthetic.main.activity_search_favorites.*
 
 class SearchFavoritesActivity : AppCompatActivity() {

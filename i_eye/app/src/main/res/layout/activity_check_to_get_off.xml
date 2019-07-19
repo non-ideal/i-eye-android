@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CheckToGetOffActivity">
+    tools:context=".ui.reserve_after.CheckToGetOffActivity">
 
     <RelativeLayout
         android:id="@+id/navigation_bar_check_to_get_off"

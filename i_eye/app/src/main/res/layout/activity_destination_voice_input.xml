@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.DestinationVoiceInputActivity">
+    tools:context=".ui.reserve_before.DestinationVoiceInputActivity">
 
     <TextView
         android:id="@+id/tv_voice_dest_input"

@@ -5,8 +5,7 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.maas.soft.i_eye.R
-import com.maas.soft.i_eye.ui.NoReservedMainActivity
-import com.maas.soft.i_eye.ui.favorite.FavoritesActivity
+import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import kotlinx.android.synthetic.main.activity_tutorial3.*
 
 class Tutorial3Activity : AppCompatActivity() {
