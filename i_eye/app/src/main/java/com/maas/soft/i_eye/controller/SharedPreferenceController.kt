@@ -9,7 +9,7 @@ import android.content.Context.MODE_PRIVATE
 object SharedPreferenceController {
 
     private val FIRST_RUN : String = "first_run"
-    private val ANDROID_ID : String = "android_id"
+    private val PHONE_NUM : String = "android_id"
     private val STATUS : Int = 0
     private val START_LAT : String = "start_lat"
     private val START_LNG : String = "start_lng"
@@ -31,24 +31,24 @@ object SharedPreferenceController {
 
     fun getFirstRun(ctx : Context) : Boolean {
         val preferences : SharedPreferences = ctx.getSharedPreferences(FIRST_RUN, MODE_PRIVATE)
-        return preferences.getBoolean(FIRST_RUN, true)   // (key 명, 든 게 없을 때 리턴할 값)
+        return preferences.getBoolean(FIRST_RUN, true)
     }
 
 
     /**
-     * ANDROID_ID
+     * PHONE_NUM
      * String
      */
-    fun setAndroidID(ctx : Context, input_android_id : String) {
-        val preferences : SharedPreferences = ctx.getSharedPreferences(ANDROID_ID, MODE_PRIVATE)
+    fun setPhoneNum(ctx : Context, input_phone_num : String) {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(PHONE_NUM, MODE_PRIVATE)
         val editor : SharedPreferences.Editor = preferences.edit()
-        editor.putString(ANDROID_ID, input_android_id)
+        editor.putString(PHONE_NUM, input_phone_num)
         editor.commit()
     }
 
-    fun getAndroidID(ctx : Context) : String {
-        val preferences : SharedPreferences = ctx.getSharedPreferences(ANDROID_ID, MODE_PRIVATE)
-        return preferences.getString(ANDROID_ID, "")
+    fun getPhoneNum(ctx : Context) : String {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(PHONE_NUM, MODE_PRIVATE)
+        return preferences.getString(PHONE_NUM, "")
     }
 
     /**
