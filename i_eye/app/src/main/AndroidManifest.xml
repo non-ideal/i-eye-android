@@ -20,12 +20,18 @@
         <activity
             android:name=".ui.ArriveAtStopActivity"
             android:label="버스 기사님의 탑승 도움이 필요하면 도움 요청 버튼을 눌러주세요." />
-        <activity android:name=".ui.RequestToHelpActivity" />
-        <activity android:name=".ui.CheckToGetOffActivity" />
-        <activity android:name=".ui.RequestToGetOffActivity" />
-        <activity android:name=".ui.tutorial.Tutorial3Activity" />
-        <activity android:name=".ui.tutorial.Tutorial2Activity" />
-        <activity android:name=".ui.tutorial.Tutorial1Activity" />
+        <activity android:name=".ui.RequestToHelpActivity"
+            android:label=""/>
+        <activity android:name=".ui.CheckToGetOffActivity"
+            android:label=""/>
+        <activity android:name=".ui.RequestToGetOffActivity"
+            android:label=""/>
+        <activity android:name=".ui.tutorial.Tutorial3Activity"
+            android:label=""/>
+        <activity android:name=".ui.tutorial.Tutorial2Activity"
+            android:label=""/>
+        <activity android:name=".ui.tutorial.Tutorial1Activity"
+            android:label=""/>
         <activity android:name=".ui.CheckDestinationVoiceInputActivity"
             android:label=""/>
         <activity android:name=".ui.favorite.CheckFavoritesVoiceInputActivity"
@@ -38,7 +44,7 @@
             android:label="예약된 버스가 없습니다." />
         <activity
             android:name=".ui.SplashActivity"
-            android:label="">
+            android:label="i-eye">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

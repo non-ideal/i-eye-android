@@ -28,6 +28,7 @@ class Tutorial3Activity : AppCompatActivity() {
 
     private fun setOnClickListener() {
         btn_next_tutorial3.setOnClickListener {
+            // TODO first run 값 변경
             val intent = Intent(applicationContext, NoReservedMainActivity::class.java)
             startActivity(intent)
         }
