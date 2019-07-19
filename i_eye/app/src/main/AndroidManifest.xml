@@ -37,6 +37,8 @@
             android:label=""/>
         <activity android:name=".ui.favorite.CheckFavoritesVoiceInputActivity"
             android:label=""/>
+        <activity android:name=".ui.RatingActivity"
+            android:label=""/>
         <activity
             android:name=".ui.favorite.DeleteFavoritesActivity"
             android:label="즐겨찾기 삭제" />
