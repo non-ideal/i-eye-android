@@ -23,10 +23,11 @@
                 android:lineSpacingExtra="4sp"
                 android:layout_marginBottom="33dp"/>
             <TextView
+                android:id="@+id/tv_guide_arrive_at_stop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="탑승을 준비해주세요."
-                android:textSize="27sp"
+                android:text="도착 후, 버스 앞 문에서\n안내방송이 나옵니다."
+                android:textSize="22sp"
                 android:fontFamily="@font/font_regular"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
