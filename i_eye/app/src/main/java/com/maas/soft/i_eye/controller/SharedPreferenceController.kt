@@ -10,7 +10,7 @@ object SharedPreferenceController {
 
     private val FIRST_RUN : String = "first_run"
     private val ANDROID_ID : String = "android_id"
-    private val STATUS : Int = 0
+    private val STATUS : String = "status"
     private val START_LAT : String = "start_lat"
     private val START_LNG : String = "start_lng"
     private val DESTINATION_LAT : String = "destination_lat"
@@ -26,7 +26,7 @@ object SharedPreferenceController {
         val preferences : SharedPreferences = ctx.getSharedPreferences(FIRST_RUN, MODE_PRIVATE)
         val editor : SharedPreferences.Editor = preferences.edit()
         editor.putBoolean(FIRST_RUN, input_first_run)
-        editor.commit()
+        editor.apply()
     }
 
     fun getFirstRun(ctx : Context) : Boolean {
@@ -43,12 +43,29 @@ object SharedPreferenceController {
         val preferences : SharedPreferences = ctx.getSharedPreferences(ANDROID_ID, MODE_PRIVATE)
         val editor : SharedPreferences.Editor = preferences.edit()
         editor.putString(ANDROID_ID, input_android_id)
-        editor.commit()
+        editor.apply()
     }
 
     fun getAndroidID(ctx : Context) : String {
         val preferences : SharedPreferences = ctx.getSharedPreferences(ANDROID_ID, MODE_PRIVATE)
         return preferences.getString(ANDROID_ID, "")
+    }
+
+
+    /**
+     * STATUS -   0: 예약X,   1: 예약O,   2: 정류장 도착,   3: 탑승,   4: 하차
+     * INT
+     */
+    fun setStatus(ctx : Context, input_status : Int) {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(STATUS, MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = preferences.edit()
+        editor.putInt(STATUS, input_status)
+        editor.apply()
+    }
+
+    fun getStatus(ctx : Context) : Int {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(STATUS, MODE_PRIVATE)
+        return preferences.getInt(STATUS, 0)
     }
 
     /**

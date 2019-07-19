@@ -54,6 +54,7 @@ class ReserveActivity : AppCompatActivity() {
 
     private fun setClickListener() {
         btn_yes_reserve.setOnClickListener {
+            SharedPreferenceController.setStatus(this, 1)
             val intent = Intent(applicationContext, ReservedMainActivity::class.java)
             startActivity(intent)
         }
