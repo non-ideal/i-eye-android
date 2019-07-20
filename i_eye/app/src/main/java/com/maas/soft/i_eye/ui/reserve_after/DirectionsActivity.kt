@@ -90,6 +90,8 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d("@@@@@@", "길찾기 액티비티 진입")
         setContentView(R.layout.activity_directions)
 
         mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager

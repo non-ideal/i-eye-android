@@ -18,6 +18,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class ArriveAtStopActivity : AppCompatActivity() {
 
@@ -29,12 +30,14 @@ class ArriveAtStopActivity : AppCompatActivity() {
         setContentView(R.layout.activity_arrive_at_stop)
         changeStatusBarColor()
         setListener()
+
+        getBusResponse()
         while(true) {
-            val handler = Handler()
-            handler.postDelayed({
+            Handler().postDelayed({
                 getBusResponse()
-            }, 3000)
+            }, 5000)
         }
+
         //TODO 지금이 되면 tv_guide_arrive_at_stop 내용 바껴야함
     }
 

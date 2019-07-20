@@ -54,6 +54,7 @@ class SplashActivity : AppCompatActivity() {
             intent = Intent(applicationContext, Tutorial1Activity::class.java)
         }
         else {
+            Log.d("@@@@@@", "현재 status ${SharedPreferenceController.getStatus(this)}")
             intent = when (SharedPreferenceController.getStatus(this)) {
                 // 예약 X
                 0 -> Intent(applicationContext, NoReservedMainActivity::class.java)
