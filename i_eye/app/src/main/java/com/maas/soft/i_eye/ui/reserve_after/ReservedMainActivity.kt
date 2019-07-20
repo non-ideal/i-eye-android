@@ -19,8 +19,10 @@ class ReservedMainActivity : AppCompatActivity() {
 
     private fun setClickListener() {
         btn_cancel_reserved_main.setOnClickListener {
+            SharedPreferenceController.setStatus(this, 0)
             val intent = Intent(applicationContext, NoReservedMainActivity::class.java)
             startActivity(intent)
+            finish()
         }
         btn_directions_reserved_main.setOnClickListener {
             val intent = Intent(applicationContext, DirectionsActivity::class.java)

@@ -38,48 +38,48 @@ class SearchingForLocationActivity : AppCompatActivity() {
 
     private fun getCurrentLoc() {
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
-        var userLocation: Location = getLatLng()
-        userLocation?.let {
-            latitude = userLocation.latitude
-            longitude = userLocation.longitude
-            Log.d("CheckCurrentLocation", "현재 내 위치 값: $latitude, $longitude")
+//        var userLocation: Location = getLatLng()
+//        userLocation?.let {
+//            latitude = userLocation.latitude
+//            longitude = userLocation.longitude
+//            Log.d("CheckCurrentLocation", "현재 내 위치 값: $latitude, $longitude")
 
-            var mGeocoder = Geocoder(applicationContext, Locale.KOREAN)
-            var mResultList: List<Address>? = null
-            try {
-                mResultList = mGeocoder.getFromLocation(
-                        latitude!!, longitude!!, 1
-                )
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-            mResultList?.let {
-                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
-                currentLocation = mResultList[0].getAddressLine(0)
-                currentLocation = currentLocation.substring(11)
-            }
-        }
+//            var mGeocoder = Geocoder(applicationContext, Locale.KOREAN)
+//            var mResultList: List<Address>? = null
+//            try {
+//                mResultList = mGeocoder.getFromLocation(
+//                        latitude!!, longitude!!, 1
+//                )
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
+//            mResultList?.let {
+//                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
+//                currentLocation = mResultList[0].getAddressLine(0)
+//                currentLocation = currentLocation.substring(11)
+//            }
+//        }
     }
 
-    private fun getLatLng() : Location {
-        var currentLatLng: Location? = null
-        if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), this.REQUEST_CODE_LOCATION)
-            getLatLng()
-        } else {
-            val locationProvider = LocationManager.GPS_PROVIDER
-            currentLatLng = locationManager?.getLastKnownLocation(locationProvider)
-        }
-        return currentLatLng!!
-    }
+//    private fun getLatLng() : Location {
+//        var currentLatLng: Location? = null
+//        if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                && ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), this.REQUEST_CODE_LOCATION)
+//            getLatLng()
+//        } else {
+//            val locationProvider = LocationManager.GPS_PROVIDER
+//            currentLatLng = locationManager?.getLastKnownLocation(locationProvider)
+//        }
+//        return currentLatLng!!
+//    }
 
     private fun moveToNextActivity() {
-            val intent = Intent(applicationContext, CheckCurrentLocationActivity::class.java)
-            intent.putExtra("currentLocation", currentLocation)
-            intent.putExtra("latitude", latitude)
-            intent.putExtra("longitude", longitude)
-            startActivity(intent)
-            finish()
+        val intent = Intent(applicationContext, CheckCurrentLocationActivity::class.java)
+        intent.putExtra("currentLocation", currentLocation)
+        intent.putExtra("latitude", latitude)
+        intent.putExtra("longitude", longitude)
+        startActivity(intent)
+        finish()
     }
 }

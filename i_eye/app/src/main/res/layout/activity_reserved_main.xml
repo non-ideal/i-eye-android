@@ -52,7 +52,7 @@
                 android:gravity="center"
                 android:textColor="@color/text"
                 android:textSize="41sp"
-                android:text="길 찾기"></TextView>
+                android:text="길 안내"></TextView>
         </LinearLayout>
 
         <RelativeLayout

@@ -87,6 +87,7 @@
                         android:gravity="center_horizontal"
                         android:textColor="#ffffff"
                         android:textSize="34sp"
+                        android:layout_marginBottom="17dp"
                         android:text="번 버스를" />
                 </LinearLayout>
 
@@ -97,16 +98,18 @@
                     android:gravity="center_horizontal"
                     android:textColor="#ffffff"
                     android:textSize="34sp"
+                    android:layout_marginBottom="17dp"
                     android:text="예약하시겠습니까?" />
 
                 <TextView
+                    android:id="@+id/tv_bus_time_reserve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_medium"
                     android:gravity="center_horizontal"
                     android:textColor="#ffffff"
                     android:textSize="23sp"
-                    android:text="소요시간 20분" />
+                    tools:text="소요시간 20분" />
             </LinearLayout>
         </RelativeLayout>
 

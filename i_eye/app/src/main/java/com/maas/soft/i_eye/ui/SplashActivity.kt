@@ -36,17 +36,17 @@ class SplashActivity : AppCompatActivity() {
         var firstRun = SharedPreferenceController.getFirstRun(this)
         lateinit var intent : Intent
         if(firstRun) { //첫 실행
-            while (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_PHONE_STATE), 100)
-            }
-            var phoneNum: String
-            val telManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            phoneNum = telManager.line1Number
-            if (phoneNum.startsWith("+82")) {
-                phoneNum = phoneNum.replace("+82", "0")
-            }
-            Log.d("SplashActivity", "폰 번호: $phoneNum")
-            SharedPreferenceController.setPhoneNum(this, phoneNum)
+//            while (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_PHONE_STATE), 100)
+//            }
+//            var phoneNum: String
+//            val telManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+//            phoneNum = telManager.line1Number
+//            if (phoneNum.startsWith("+82")) {
+//                phoneNum = phoneNum.replace("+82", "0")
+//            }
+//            Log.d("SplashActivity", "폰 번호: $phoneNum")
+//            SharedPreferenceController.setPhoneNum(this, phoneNum)
 
             //TODO 서버로 휴대폰 번호 전송
             SharedPreferenceController.setFirstRun(this, false)
