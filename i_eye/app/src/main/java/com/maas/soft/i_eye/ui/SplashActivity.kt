@@ -14,6 +14,10 @@ import com.maas.soft.i_eye.controller.SharedPreferenceController
 import com.maas.soft.i_eye.ui.tutorial.Tutorial1Activity
 import android.telephony.TelephonyManager
 import android.util.Log
+import com.maas.soft.i_eye.ui.reserve_after.AfterBoardingActivity
+import com.maas.soft.i_eye.ui.reserve_after.ArriveAtStopActivity
+import com.maas.soft.i_eye.ui.reserve_after.DirectionsActivity
+import com.maas.soft.i_eye.ui.reserve_after.ReservedMainActivity
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 
 
@@ -46,11 +50,22 @@ class SplashActivity : AppCompatActivity() {
 
             //TODO 서버로 휴대폰 번호 전송
             SharedPreferenceController.setFirstRun(this, false)
-            //TODO 예약 상태에 따라 화면 이동
+
             intent = Intent(applicationContext, Tutorial1Activity::class.java)
         }
         else {
-            intent = Intent(applicationContext, NoReservedMainActivity::class.java)
+            intent = when (SharedPreferenceController.getStatus(this)) {
+                // 예약 X
+                0 -> Intent(applicationContext, NoReservedMainActivity::class.java)
+                // 예약 O
+                1 -> Intent(applicationContext, ReservedMainActivity::class.java)
+                // 정류장 도착
+                2 -> Intent(applicationContext, ArriveAtStopActivity::class.java)
+                // 탑승
+                3 -> Intent(applicationContext, AfterBoardingActivity::class.java)
+                // 하차
+                else -> Intent(applicationContext, DirectionsActivity::class.java)
+            }
         }
         moveToNextActivity(intent)
     }

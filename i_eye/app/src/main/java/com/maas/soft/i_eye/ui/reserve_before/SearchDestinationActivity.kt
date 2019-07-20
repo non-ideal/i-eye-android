@@ -82,13 +82,14 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
     private fun searchPOI(str: String) {
         object : Thread() {
             override fun run() {
+                placeItems.clear()
                 item = tmapdata.findAllPOI(str)?:ArrayList()
                 for (i in 0 until item.size){
                     placeItems.add(item[i].poiName)
                 }
-                handler.post(Runnable {
+                handler.post {
                     placeAdapter.notifyDataSetChanged()
-                })
+                }
             }
         }.start()
     }
