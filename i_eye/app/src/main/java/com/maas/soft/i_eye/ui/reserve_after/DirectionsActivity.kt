@@ -37,6 +37,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.location.Location
 import android.location.LocationListener
+import android.os.Vibrator
 import android.speech.tts.TextToSpeech
 import com.maas.soft.i_eye.model.PathResDto
 import com.maas.soft.i_eye.model.Type
@@ -44,6 +45,7 @@ import com.skt.Tmap.TMapMarkerItem
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.floor
 
 
 class DirectionsActivity : AppCompatActivity(), SensorEventListener {
@@ -57,7 +59,8 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
     private var mLastMagnetometerSet : Boolean = false
     private var mR : FloatArray = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
     private var mOrientation : FloatArray = floatArrayOf(0f, 0f, 0f)
-    private var mCurrentDegree  : Float= 0f
+    private var mCurrentDegree  : Double = 0.0
+    private lateinit var vibrator : Vibrator
 
     private lateinit var tts : TextToSpeech
     private lateinit var tMapView : TMapView
@@ -98,6 +101,7 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         })
         locationManager = this.getSystemService(LOCATION_SERVICE) as LocationManager
         status = SharedPreferenceController.getStatus(this)
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         getLatLng()
         getTMap()
@@ -145,8 +149,8 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         }
         if (mLastAccelerometerSet && mLastMagnetometerSet) {
             SensorManager.getRotationMatrix(mR, null, mLastAccelerometer, mLastMagnetometer)
-            var azimuthinDegress = (Math.toDegrees(SensorManager.getOrientation(mR, mOrientation)[0].toDouble()) + 360) % 360
-            Log.d("@@@@@@@", "Heading: $azimuthinDegress degree")
+            mCurrentDegree = (Math.toDegrees(SensorManager.getOrientation(mR, mOrientation)[0].toDouble()) + 360) % 360
+            Log.d("@@@@@@@", "Heading: $mCurrentDegree degree")
         }
     }
 
@@ -208,11 +212,40 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0f, locationListener)
     }
 
+     private fun getDegreeBetween(lat1:Double, lng1:Double, lat2:Double, lng2:Double) : Long{
+         val PI = Math.PI
+         val dTeta = Math.log(Math.tan((lat2/2)+(PI/4))/Math.tan((lat1/2)+(PI/4)))
+         val dLon = Math.abs(lng1-lng2)
+         val teta = Math.atan2(dLon,dTeta)
+         return Math.round(Math.toDegrees(teta))
+    }
+
     private fun chkPoint() {
+        val clockKor = arrayOf("열두", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열", "열한")
         for (i in pathCnt until paths.size){
             if(paths[i].type==Type.POINT && paths[i].turnType!="일반" && paths[i].y-0.0001 <= latitude && latitude <= paths[i].y+0.0001 && paths[i].x-0.0001 <= longitude && longitude <= paths[i].x+0.0001){
                 tts.speak("여기서 ${paths[i].turnType} 하십시오.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
                 pathCnt = i
+
+                val pointDegree = getDegreeBetween(paths[i].y, paths[i].x, paths[i+1].y, paths[i+1].x)
+                var userDir = 0
+                var roadDir = 0
+                var clock = 0
+                while(!(pointDegree-15 <= mCurrentDegree && mCurrentDegree <= pointDegree+15)) {
+                    vibrator.vibrate(1000)
+                    // 시계 방위로 변경 (0~11시 방향)
+                    userDir = ((mCurrentDegree + 15) % 360 / 30).toInt()
+                    roadDir = ((pointDegree + 15) % 360 / 30).toInt()
+
+                    // userDir을 12시 기준으로 roadDir 시계 방위 구하기
+                    clock = if(userDir > roadDir)
+                                12-userDir-roadDir
+                            else
+                                roadDir-userDir
+
+                    tts.speak("${clockKor[clock]}시 방향으로 직진하세요.\n", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+                }
+
                 break
             }
         }
