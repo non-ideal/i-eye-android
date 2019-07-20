@@ -14,6 +14,7 @@ import com.maas.soft.i_eye.controller.SharedPreferenceController
 import com.maas.soft.i_eye.ui.tutorial.Tutorial1Activity
 import android.telephony.TelephonyManager
 import android.util.Log
+import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 
 
 class SplashActivity : AppCompatActivity() {

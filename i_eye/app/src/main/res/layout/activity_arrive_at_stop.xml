@@ -15,7 +15,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2분 후\n421(저상)\n버스 도착"
+                android:text="2분 후\n421번\n버스 도착"
                 android:fontFamily="@font/font_medium"
                 android:textSize="36sp"
                 android:textColor="#ffffff"
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="도착 후, 버스 앞 문에서\n안내방송이 나옵니다."
+                android:contentDescription="도착 후, 버스 앞 문에서 안내방송이 나옵니다."
                 android:textSize="22sp"
                 android:fontFamily="@font/font_regular"
                 android:textColor="#ffffff"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RequestToHelpActivity">
+    tools:context=".ui.reserve_after.RequestToHelpActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -52,6 +52,6 @@
         android:fontFamily="@font/font_bold"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:text="도움요청중.."/>
+        android:text="도움 요청 완료"/>
 
 </RelativeLayout>

@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.maas.soft.i_eye.R
-import com.maas.soft.i_eye.ui.PlaceDeleteAdapter
-import com.maas.soft.i_eye.ui.PlaceDeleteData
 import kotlinx.android.synthetic.main.activity_delete_favorites.*
 
 class DeleteFavoritesActivity : AppCompatActivity(), View.OnClickListener {

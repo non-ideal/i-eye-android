@@ -1,4 +1,4 @@
-package com.maas.soft.i_eye.ui
+package com.maas.soft.i_eye.ui.reserve_before
 
 import android.content.Intent
 import android.os.Build
@@ -14,8 +14,6 @@ import android.Manifest.permission.RECORD_AUDIO
 import android.support.v4.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.support.v4.content.ContextCompat
-
-
 
 
 class DestinationVoiceInputActivity : AppCompatActivity() {
