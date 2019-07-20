@@ -37,6 +37,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.location.Location
 import android.location.LocationListener
+import android.os.Handler
 import android.os.Vibrator
 import android.speech.tts.TextToSpeech
 import com.maas.soft.i_eye.model.PathResDto
@@ -95,73 +96,64 @@ class DirectionsTestActivity : AppCompatActivity(){
         getTMap()
         getPathResponse()
         changeStatusBarColor()
-        setLocationListener()
+        setLocation()
 
         var lm : LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         if (ActivityCompat.checkSelfPermission(applicationContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(applicationContext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION), 1)
         }else{
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, // 등록할 위치제공자
-                    1000, // 통지사이의 최소 시간간격 (miliSecond)
-                    1f, // 통지사이의 최소 변경거리 (m)
-                    locationListener)
+//            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, // 등록할 위치제공자
+//                    1000, // 통지사이의 최소 시간간격 (miliSecond)
+//                    1f, // 통지사이의 최소 변경거리 (m)
+//                    locationListener)
         }
     }
-    private fun setLocationListener() {
-            locationListener = object : LocationListener {
-            override fun onLocationChanged(location: Location?) {
-                if (location != null) {
-                    latitude = location.latitude
-                    longitude = location.longitude
-                    tMapView.setLocationPoint(longitude, latitude)
-                    tMapView.setCenterPoint(longitude, latitude)
-                }
-                Log.d("@@@@@@", "위치 변경 감지")
-                Log.d("ㅁㄴㅇㄹ", "현재 좌표 $longitude, $latitude")
-                Log.d("ㅁㄴㅇㄹ", "목적지 좌표 $desLongitude, $desLatitude")
 
-//                if(desLatitude-0.002 <= latitude && latitude <= desLatitude+0.002 && desLongitude-0.002 <= longitude && longitude <= desLongitude+0.002){
-//                    Log.d("@@@@@@", "도착")
-//
-//                    if(status==1) {
-//                        Log.d("@@@@@@", "status 1, 버스 정류장 도착")
-//
-//                        tts.speak("버스 정류장에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
-//                        SharedPreferenceController.setStatus(applicationContext, 2)
-//                        Intent(applicationContext, ArriveAtStopActivity::class.java).let {
-//                            it.putExtra("BUS_NUM", 1125)
-//                            startActivity(it)
-//                            finish()
-//                        }
-//                    }else {
-//                        Log.d("@@@@@@", "status 1 아님, 목적지 도착")
-//
-//                        tts.speak("목적지에 도착하였습니다. 하단의 안내 종료 버튼을 눌러서 안내를 종료하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
-//                        SharedPreferenceController.setStatus(applicationContext, 0)
-//                        startActivity(Intent(applicationContext, NoReservedMainActivity::class.java))
-//                        finish()
-//                    }
-//                }
+    private fun setLocation() {
+//        for (i in 0 until paths.size){
+//            if(paths[i].type==Type.BUS_STOP)
+//                break
 
-            }
+            Handler().postDelayed({
+                tMapView.setLocationPoint(paths[0].x, paths[0].y)
+                Log.d("ASDASD", "${paths[0].x}, ${paths[0].y}")
 
+                Handler().postDelayed({
+                    tMapView.setLocationPoint(127.03121516595668, paths[1].y)
+                    Log.d("ASDASD", "${paths[1].x}, ${paths[1].y}")
+                    Handler().postDelayed({
+                        tMapView.setLocationPoint(paths[2].x, paths[2].y)
+                        Log.d("ASDASD", "${paths[2].x}, ${paths[2].y}")
+                        Handler().postDelayed({
+                            tMapView.setLocationPoint(paths[3].x, paths[3].y)
+                            Log.d("ASDASD", "${paths[3].x}, ${paths[3].y}")
+                            Handler().postDelayed({
+                                tMapView.setLocationPoint(paths[4].x, paths[4].y)
+                                Log.d("ASDASD", "${paths[4].x}, ${paths[4].y}")
+                                Handler().postDelayed({
+                                    tMapView.setLocationPoint(paths[5].x, paths[5].y)
+                                    Log.d("ASDASD", "${paths[5].x}, ${paths[5].y}")
+                                    Handler().postDelayed({
+                                        tMapView.setLocationPoint(paths[6].x, paths[6].y)
+                                        Log.d("ASDASD", "${paths[6].x}, ${paths[6].y}")
+                                        Handler().postDelayed({
+                                            tMapView.setLocationPoint(paths[7].x, paths[7].y)
+                                            Log.d("ASDASD", "${paths[7].x}, ${paths[7].y}")
+                                            Handler().postDelayed({
+                                                tMapView.setLocationPoint(paths[8].x, paths[8].y)
+                                                Log.d("ASDASD", "${paths[8].x}, ${paths[8].y}")
 
-            override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-            }
-
-            override fun onProviderEnabled(provider: String?) {
-            }
-
-            override fun onProviderDisabled(provider: String?) {
-            }
-        }
-
-        if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0f, locationListener)
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0f, locationListener)
+                                            },1000)
+                                        },1000)
+                                    },1000)
+                                },1000)
+                            },1000)
+                        },1000)
+                    },1000)
+                },1000)
+            },1000)
+//        }
     }
 
     private fun getLatLng() {
@@ -187,7 +179,7 @@ class DirectionsTestActivity : AppCompatActivity(){
         tMapView.zoomLevel = 30
         tMapView.mapType = TMapView.MAPTYPE_HYBRID  //일반지도
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN)
-        tMapView.setTrackingMode(true)
+        tMapView.setTrackingMode(false)
         tMapView.setSightVisible(true)
         tMapView.contentDescription = "지도 영역입니다"
     }
