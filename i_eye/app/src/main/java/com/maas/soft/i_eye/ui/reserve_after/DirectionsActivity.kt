@@ -26,10 +26,15 @@ import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.support.v4.app.ActivityCompat
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.location.Location
 import android.location.LocationListener
 import android.speech.tts.TextToSpeech
 import com.maas.soft.i_eye.model.Type
+import com.skt.Tmap.TMapMarkerItem
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import java.util.*
 import kotlin.collections.ArrayList
@@ -45,6 +50,15 @@ class DirectionsActivity : AppCompatActivity() {
     private var longitude : Double = 0.0
     private var desLatitude : Double = 0.0
     private var desLongitude : Double = 0.0
+
+    private var busStopLat : Double = 0.0
+    private var busStopLng : Double= 0.0
+
+    private var offBusStopLat : Double = 0.0
+    private var offBusStopLng : Double= 0.0
+
+    private var finalDesLat : Double = 0.0
+    private var finalDesLng : Double= 0.0
 
     private var paths : ArrayList<PathResDto> = ArrayList()
     private var pathCnt = 0
@@ -141,13 +155,16 @@ class DirectionsActivity : AppCompatActivity() {
         tMapView.setCenterPoint(longitude!!,latitude!!)
         tMapView.setCompassMode(true)
         tMapView.setIconVisibility(true)
+
+        var d : Drawable = resources.getDrawable(R.drawable.current_loc_icon)
+        var bitmap : Bitmap = (d as BitmapDrawable).bitmap
+        tMapView.setIcon(bitmap)
         tMapView.zoomLevel = 30
         tMapView.mapType = TMapView.MAPTYPE_HYBRID  //일반지도
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN)
         tMapView.setTrackingMode(true)
         tMapView.setSightVisible(true)
         tMapView.contentDescription = "지도 영역입니다"
-        mapview_directions.addView(tMapView)
     }
 
     private fun drawLine(pathResDtoList : List<PathResDto>) {
@@ -160,31 +177,83 @@ class DirectionsActivity : AppCompatActivity() {
             for(i in pathResDtoList) {
                 alTMapPoint.add(TMapPoint(i.y, i.x))
 
-                if(i.type == Type.BUS_STOP)
+                if(i.type == Type.BUS_STOP) {
+                    busStopLng = i.x
+                    busStopLat = i.y
                     break
+                }
             }
 
         } else {
             // 하차 후
             // 내린 정거장 부터 목적지까지 draw
             var flag = false
+
+            finalDesLat = pathResDtoList[pathResDtoList.size-1].y
+            finalDesLng = pathResDtoList[pathResDtoList.size-1].x
+
             for(i in pathResDtoList) {
                 if (flag){
-                    alTMapPoint.add(TMapPoint(i.y, i.x))
+                    if(i.type == Type.BUS_STOP) {
+                        offBusStopLng = i.x
+                        offBusStopLat = i.y
+                    }
+                    alTMapPoint.add(TMapPoint( i.y, i.x))
                 }
                 if (i.type == Type.BUS_STOP)
                     flag = true
+
             }
 
         }
 
         val tMapPolyLine = TMapPolyLine()
-        tMapPolyLine.lineColor = Color.parseColor("#FF6C00")
+        tMapPolyLine.lineColor = Color.parseColor("#484848")
+        tMapPolyLine.lineAlpha = -100
         tMapPolyLine.lineWidth = 80f
+        tMapPolyLine.outLineColor = Color.parseColor("#484848")
+        tMapPolyLine.outLineAlpha = -100
+        tMapPolyLine.outLineWidth = 80f
         for (i in 0 until alTMapPoint.size) {
             tMapPolyLine.addLinePoint(alTMapPoint[i])
         }
         tMapView.addTMapPolyLine("Line1", tMapPolyLine)
+    }
+
+    private fun drawMarker() {
+        var startMarker = TMapMarkerItem()
+        var desMarker = TMapMarkerItem()
+        var startMarkerPos : TMapPoint
+        var desMarkerPos : TMapPoint
+
+        // 마커 아이콘
+        var startIcon : Bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.start_marker)
+        var desIcon : Bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.dest_marker)
+
+        if (status == 1) {
+            startMarkerPos = TMapPoint(SharedPreferenceController.getStartLat(this), SharedPreferenceController.getStartLng(this))
+            desMarkerPos = TMapPoint(busStopLat, busStopLng)
+        }
+
+        else {
+            startMarkerPos = TMapPoint(offBusStopLat, offBusStopLng)
+            desMarkerPos = TMapPoint(finalDesLat, finalDesLng)
+        }
+
+        startMarker.icon = startIcon // 마커 아이콘 지정
+        startMarker.setPosition(0.5f, 1.0f) // 마커의 중심점을 중앙, 하단으로 설정
+        startMarker.tMapPoint = startMarkerPos // 마커의 좌표 지정
+
+        desMarker.icon = desIcon // 마커 아이콘 지정
+        desMarker.setPosition(0.5f, 1.0f) // 마커의 중심점을 중앙, 하단으로 설정
+        desMarker.tMapPoint = desMarkerPos // 마커의 좌표 지정
+
+        tMapView.addMarkerItem("startMarker", startMarker) // 지도에 마커 추가
+        tMapView.addMarkerItem("desMarker", desMarker) // 지도에 마커 추가
+
+//        tMapView.setCenterPoint( 126.985302, 37.570841 );
+        mapview_directions.addView(tMapView)
+
     }
 
     private fun changeStatusBarColor() {
@@ -219,6 +288,7 @@ class DirectionsActivity : AppCompatActivity() {
                             Log.d("pathResponse 결과: ", response.body().toString())
 
                             drawLine(response.body()!!)
+                            drawMarker()
                         }
                         403 -> {
                             Log.d("pathResponse 상태 코드: ","403")

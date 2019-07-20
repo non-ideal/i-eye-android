@@ -2,11 +2,8 @@ package com.maas.soft.i_eye.ui.reserve_before
 
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.maas.soft.i_eye.R
-import android.view.MotionEvent
 import kotlinx.android.synthetic.main.item_list.view.*
 
 
@@ -21,6 +18,7 @@ class PlaceAdapter(var placeItems: ArrayList<String>) : RecyclerView.Adapter<Pla
         val mainView : View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_list, parent, false)
         mainView.setOnClickListener(onItemClick)
+
 
         mainView.setOnTouchListener { view, motionEvent ->
             if (motionEvent.action == MotionEvent.ACTION_DOWN) {

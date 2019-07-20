@@ -91,27 +91,7 @@
                         android:lineSpacingExtra="20sp"
                         android:textColor="#ffffff"
                         android:textSize="41sp"
-                        android:text="(" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/font_medium"
-                        android:gravity="center"
-                        android:lineSpacingExtra="20sp"
-                        android:textColor="#ffffff"
-                        android:textSize="41sp"
-                        android:text="저상" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/font_medium"
-                        android:gravity="center"
-                        android:lineSpacingExtra="20sp"
-                        android:textColor="#ffffff"
-                        android:textSize="41sp"
-                        android:text=") 버스" />
+                        android:text="번 버스" />
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"

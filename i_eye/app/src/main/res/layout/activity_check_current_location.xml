@@ -86,7 +86,7 @@
                     android:lineSpacingExtra="18sp"
                     android:textColor="#ffffff"
                     android:textSize="39sp"
-                    android:text="" />
+                    android:text="삼정호텔" />
 
                 <TextView
                     android:layout_width="match_parent"
