@@ -1,6 +1,5 @@
 package com.maas.soft.i_eye.ui.reserve_after
 
-import android.Manifest
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -32,9 +31,14 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Location
 import android.location.LocationListener
 import android.speech.tts.TextToSpeech
+import android.view.animation.RotateAnimation
 import com.maas.soft.i_eye.model.Type
 import com.skt.Tmap.TMapMarkerItem
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
@@ -42,7 +46,19 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class DirectionsActivity : AppCompatActivity() {
+class DirectionsActivity : AppCompatActivity(), SensorEventListener {
+
+    private lateinit var mSensorManager : SensorManager
+    private lateinit var mAccelerometer : Sensor
+    private lateinit var mMagnetometer : Sensor
+    private var mLastAccelerometer : FloatArray = floatArrayOf(0f, 0f, 0f)
+    private var mLastMagnetometer : FloatArray = floatArrayOf(0f, 0f, 0f)
+    private var mLastAccelerometerSet : Boolean = false
+    private var mLastMagnetometerSet : Boolean = false
+    private var mR : FloatArray = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
+    private var mOrientation : FloatArray = floatArrayOf(0f, 0f, 0f)
+    private var mCurrentDegree  : Float= 0f
+
     private lateinit var tts : TextToSpeech
     private lateinit var tMapView : TMapView
     private lateinit var locationManager : LocationManager
@@ -73,6 +89,10 @@ class DirectionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_directions)
 
+        mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+
         tts = TextToSpeech(applicationContext, TextToSpeech.OnInitListener {
             tts.language = Locale.KOREAN
         })
@@ -97,6 +117,38 @@ class DirectionsActivity : AppCompatActivity() {
                 locationListener)
     }
 
+    override fun onResume() {
+        super.onResume()
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME)
+        mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_GAME)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mSensorManager.unregisterListener(this, mAccelerometer)
+        mSensorManager.unregisterListener(this, mMagnetometer)
+
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+        Log.d("@@@@@@", "onAccuracyChanged")
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        Log.d("@@@@@@", "onSensorChanged")
+        if (event!!.sensor == mAccelerometer) {
+            System.arraycopy(event.values, 0, mLastAccelerometer, 0, event.values.size)
+            mLastAccelerometerSet = true
+        } else if (event.sensor == mMagnetometer) {
+            System.arraycopy(event.values, 0, mLastMagnetometer, 0, event.values.size)
+            mLastMagnetometerSet = true;
+        }
+        if (mLastAccelerometerSet && mLastMagnetometerSet) {
+            SensorManager.getRotationMatrix(mR, null, mLastAccelerometer, mLastMagnetometer)
+            var azimuthinDegress = (Math.toDegrees(SensorManager.getOrientation(mR, mOrientation)[0].toDouble()) + 360) % 360
+            Log.d("@@@@@@@", "Heading: $azimuthinDegress degree")
+        }
+    }
 
     private fun setLocationListener() {
             locationListener = object : LocationListener {
