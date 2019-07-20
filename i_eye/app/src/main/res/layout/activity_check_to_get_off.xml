@@ -38,7 +38,7 @@
                 android:lineSpacingExtra="8sp"
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/font_medium"
-                android:text="광화문역"
+                android:text="라마다호텔역"
                 android:layout_marginBottom="8sp"
                 />
             <TextView

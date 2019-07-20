@@ -168,7 +168,7 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                 Log.d("ㅁㄴㅇㄹ", "현재 좌표 $longitude, $latitude")
                 Log.d("ㅁㄴㅇㄹ", "목적지 좌표 $desLongitude, $desLatitude")
 
-                if(desLatitude-0.002 <= latitude && latitude <= desLatitude+0.002 && desLongitude-0.002 <= longitude && longitude <= desLongitude+0.002){
+                if(desLatitude-0.015 <= latitude && latitude <= desLatitude+0.015 && desLongitude-0.015 <= longitude && longitude <= desLongitude+0.015){
                     Log.d("@@@@@@", "도착")
 
                     if(status==1) {
