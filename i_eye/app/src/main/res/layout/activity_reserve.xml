@@ -87,23 +87,7 @@
                         android:gravity="center_horizontal"
                         android:textColor="#ffffff"
                         android:textSize="34sp"
-                        android:text="(" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:gravity="center_horizontal"
-                        android:textColor="#ffffff"
-                        android:textSize="34sp"
-                        android:text="저상" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_medium"
-                        android:gravity="center_horizontal"
-                        android:textColor="#ffffff"
-                        android:textSize="34sp"
-                        android:text=") 버스를" />
+                        android:text="번 버스를" />
                 </LinearLayout>
 
                 <TextView

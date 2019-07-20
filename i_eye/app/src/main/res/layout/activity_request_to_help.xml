@@ -52,6 +52,6 @@
         android:fontFamily="@font/font_bold"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:text="도움요청중.."/>
+        android:text="도움 요청 완료"/>
 
 </RelativeLayout>

@@ -56,8 +56,7 @@ class DirectionsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_directions)
 
         tts = TextToSpeech(applicationContext, TextToSpeech.OnInitListener {
-            if(status!=TextToSpeech.ERROR)
-                tts.language = Locale.KOREAN
+            tts.language = Locale.KOREAN
         })
         locationManager = this.getSystemService(LOCATION_SERVICE) as LocationManager
         status = SharedPreferenceController.getStatus(this)
