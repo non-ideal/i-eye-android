@@ -63,6 +63,9 @@ class ReserveActivity : AppCompatActivity() {
             i.fid?.let {
                 SharedPreferenceController.setStationId(this, it)
             }
+            i.tid?.let {
+                SharedPreferenceController.setEndStationId(this, it)
+            }
         }
     }
 

@@ -75,6 +75,7 @@ class ArriveAtStopActivity : AppCompatActivity() {
                             Log.d("busResponse 상태 코드: ","200")
                             Log.d("busResponse 결과: ", response.body().toString())
                             var remainTime : Int = (response.body()!!.firstTime.toInt())/60
+                            Log.d("@@@@@@@@@@", "remainTime : $remainTime")
                             if(remainTime > 0) {
                                 tv_minute_arrive_at_stop.text = remainTime.toString()+"분 후"
                                 tv_guide_arrive_at_stop.text = "도착 후, 버스 앞 문에서\n안내방송이 나옵니다."
