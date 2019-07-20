@@ -45,7 +45,6 @@ import com.skt.Tmap.TMapMarkerItem
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.floor
 
 
 class DirectionsActivity : AppCompatActivity(), SensorEventListener {
@@ -225,16 +224,19 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
     private fun chkPoint() {
         val clockKor = arrayOf("열두", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열", "열한")
         for (i in pathCnt until paths.size){
-            if(paths[i].type==Type.POINT && paths[i].turnType!="일반" && paths[i].y-0.0001 <= latitude && latitude <= paths[i].y+0.0001 && paths[i].x-0.0001 <= longitude && longitude <= paths[i].x+0.0001){
+            if(paths[i].type==Type.POINT && paths[i].turnType!="앞으로 가세요." && paths[i].y-0.0001 <= latitude && latitude <= paths[i].y+0.0001 && paths[i].x-0.0001 <= longitude && longitude <= paths[i].x+0.0001){
                 tts.speak("여기서 ${paths[i].turnType} 하십시오.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
                 pathCnt = i
 
-                val pointDegree = getDegreeBetween(paths[i].y, paths[i].x, paths[i+1].y, paths[i+1].x)
+                Log.d("ASDASD","${i} ${paths[i].turnType}")
+                val pointDegree = getDegreeBetween(paths[i].y, paths[i].x, paths[i+2].y, paths[i+2].x)
+
+                Log.d("ASDASD","${i} point degree: ${pointDegree}")
                 var userDir = 0
                 var roadDir = 0
                 var clock = 0
-                while(!(pointDegree-15 <= mCurrentDegree && mCurrentDegree <= pointDegree+15)) {
-                    vibrator.vibrate(1000)
+                if(!(pointDegree-15 <= mCurrentDegree && mCurrentDegree < pointDegree+15)) {
+//                    vibrator.vibrate(10)
                     // 시계 방위로 변경 (0~11시 방향)
                     userDir = ((mCurrentDegree + 15) % 360 / 30).toInt()
                     roadDir = ((pointDegree + 15) % 360 / 30).toInt()
@@ -246,6 +248,8 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                                 roadDir-userDir
 
                     tts.speak("${clockKor[clock]}시 방향으로 직진하세요.\n", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+
+                    Log.d("ASDASD","${i} ${clock} ${userDir} ${roadDir}")
                 }
 
                 break
