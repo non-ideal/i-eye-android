@@ -12,16 +12,68 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerInParent="true">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="2분 후\n421번\n버스 도착"
-                android:fontFamily="@font/font_medium"
-                android:textSize="36sp"
-                android:textColor="#ffffff"
-                android:gravity="center_horizontal"
-                android:lineSpacingExtra="4sp"
-                android:layout_marginBottom="33dp"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="33dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <TextView
+                        android:id="@+id/tv_minute_arrive_at_stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2분 후"
+                        android:fontFamily="@font/font_medium"
+                        android:textSize="36sp"
+                        android:textColor="#ffffff"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="4sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <TextView
+                        android:id="@+id/tv_bus_num_arrive_at_stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="421"
+                        android:fontFamily="@font/font_medium"
+                        android:textSize="36sp"
+                        android:textColor="#ffffff"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="4sp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="번"
+                        android:fontFamily="@font/font_medium"
+                        android:textSize="36sp"
+                        android:textColor="#ffffff"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="4sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="버스 도착"
+                        android:fontFamily="@font/font_medium"
+                        android:textSize="36sp"
+                        android:textColor="#ffffff"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="4sp"/>
+                </LinearLayout>
+            </LinearLayout>
             <TextView
                 android:id="@+id/tv_guide_arrive_at_stop"
                 android:layout_width="match_parent"
