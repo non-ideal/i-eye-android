@@ -1,5 +1,6 @@
 package com.maas.soft.i_eye.ui.reserve_after
 
+import android.Manifest
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -25,6 +26,7 @@ import android.content.pm.PackageManager
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.support.v4.app.ActivityCompat
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -65,6 +67,8 @@ class DirectionsActivity : AppCompatActivity() {
 
     private var networkService: NetworkService = ApplicationController.instance.networkService
 
+    var locationListener : LocationListener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_directions)
@@ -80,14 +84,28 @@ class DirectionsActivity : AppCompatActivity() {
         getPathResponse()
         changeStatusBarColor()
         setLocationListener()
+
+        var lm : LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (ActivityCompat.checkSelfPermission(applicationContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(applicationContext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION), 1)
+        }
+
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, // 등록할 위치제공자
+                1000, // 통지사이의 최소 시간간격 (miliSecond)
+                1f, // 통지사이의 최소 변경거리 (m)
+                locationListener)
     }
 
+
     private fun setLocationListener() {
-        val locationListener = object : LocationListener {
+            locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location?) {
                 if (location != null) {
                     latitude = location.latitude
                     longitude = location.longitude
+                    tMapView.setLocationPoint(longitude, latitude);
+                    tMapView.setCenterPoint(longitude, latitude);
                 }
 
                 if(desLatitude-0.0002 <= latitude && latitude <= desLatitude+0.0002 && desLongitude-0.0002 <= longitude && longitude <= desLongitude+0.0002){
