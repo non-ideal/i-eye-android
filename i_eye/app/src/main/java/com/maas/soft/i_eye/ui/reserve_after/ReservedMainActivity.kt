@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.maas.soft.i_eye.R
 import com.maas.soft.i_eye.controller.SharedPreferenceController
+import com.maas.soft.i_eye.ui.DirectionsTestActivity
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import kotlinx.android.synthetic.main.activity_reserved_main.*
 
@@ -29,6 +30,9 @@ class ReservedMainActivity : AppCompatActivity() {
             Log.d("@@@@@@", "길찾기 버튼 클릭")
             val intent = Intent(applicationContext, DirectionsActivity::class.java)
             startActivity(intent)
+        }
+        relative_reserved_main.setOnClickListener {
+            startActivity(Intent(this, DirectionsTestActivity::class.java))
         }
     }
 }

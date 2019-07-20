@@ -8,6 +8,7 @@
     tools:context=".ui.reserve_after.ReservedMainActivity">
 
     <RelativeLayout
+        android:id="@+id/relative_reserved_main"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/orange">
