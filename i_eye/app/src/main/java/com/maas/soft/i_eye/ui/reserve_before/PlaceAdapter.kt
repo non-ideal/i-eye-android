@@ -3,8 +3,10 @@ package com.maas.soft.i_eye.ui.reserve_before
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.*
+import android.view.accessibility.AccessibilityEvent
 import com.maas.soft.i_eye.R
 import kotlinx.android.synthetic.main.item_list.view.*
+import java.lang.reflect.AccessibleObject
 
 
 class PlaceAdapter(var placeItems: ArrayList<String>) : RecyclerView.Adapter<PlaceViewHolder>() {
@@ -24,7 +26,7 @@ class PlaceAdapter(var placeItems: ArrayList<String>) : RecyclerView.Adapter<Pla
             if (motionEvent.action == MotionEvent.ACTION_DOWN) {
                 view.setBackgroundColor(Color.parseColor("#D6D7D7"))
                 mainView.tv_name_place.setTextColor(Color.parseColor("#242424"))
-            } else if (motionEvent.action == MotionEvent.ACTION_UP) {
+            } else if (motionEvent.action == MotionEvent.ACTION_CANCEL || motionEvent.action == MotionEvent.ACTION_UP) {
                 view.setBackgroundColor(Color.parseColor("#171717"))
                 mainView.tv_name_place.setTextColor(Color.parseColor("#FFFFFF"))
             }
