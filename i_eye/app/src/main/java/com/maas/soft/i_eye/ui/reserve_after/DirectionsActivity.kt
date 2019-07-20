@@ -115,12 +115,12 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
 
         if (ActivityCompat.checkSelfPermission(applicationContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(applicationContext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION), 1)
+        }else{
+            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, // 등록할 위치제공자
+                    1000, // 통지사이의 최소 시간간격 (miliSecond)
+                    1f, // 통지사이의 최소 변경거리 (m)
+                    locationListener)
         }
-
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, // 등록할 위치제공자
-                1000, // 통지사이의 최소 시간간격 (miliSecond)
-                1f, // 통지사이의 최소 변경거리 (m)
-                locationListener)
     }
 
     override fun onResume() {
@@ -169,7 +169,7 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                 Log.d("ㅁㄴㅇㄹ", "현재 좌표 $longitude, $latitude")
                 Log.d("ㅁㄴㅇㄹ", "목적지 좌표 $desLongitude, $desLatitude")
 
-                if(desLatitude-0.02 <= latitude && latitude <= desLatitude+0.02 && desLongitude-0.02 <= longitude && longitude <= desLongitude+0.02){
+                if(desLatitude-0.002 <= latitude && latitude <= desLatitude+0.002 && desLongitude-0.002 <= longitude && longitude <= desLongitude+0.002){
                     Log.d("@@@@@@", "도착")
 
                     if(status==1) {

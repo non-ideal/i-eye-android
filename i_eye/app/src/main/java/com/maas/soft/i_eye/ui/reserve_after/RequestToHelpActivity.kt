@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import com.maas.soft.i_eye.R
+import com.maas.soft.i_eye.controller.SharedPreferenceController
+import kotlinx.android.synthetic.main.activity_request_to_help.*
 import java.util.*
 
 class RequestToHelpActivity : AppCompatActivity() {
@@ -19,6 +21,8 @@ class RequestToHelpActivity : AppCompatActivity() {
             tts.language = Locale.KOREAN
         })
         tts.speak("도움 요청을 완료했습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+
+        tv_request_to_help.setOnClickListener { SharedPreferenceController.setStatus(this, 0) }
     }
 
     private fun changeStatusBarColor() {

@@ -18,7 +18,6 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class ArriveAtStopActivity : AppCompatActivity() {
 
@@ -32,11 +31,11 @@ class ArriveAtStopActivity : AppCompatActivity() {
         setListener()
 
         getBusResponse()
-        while(true) {
-            Handler().postDelayed({
-                getBusResponse()
-            }, 5000)
-        }
+//        while(true) {
+//            Handler().postDelayed({
+//                getBusResponse()
+//            }, 5000)
+//        }
 
         //TODO 지금이 되면 tv_guide_arrive_at_stop 내용 바껴야함
     }
@@ -84,7 +83,7 @@ class ArriveAtStopActivity : AppCompatActivity() {
                                 tv_minute_arrive_at_stop.text = "지금"
                                 tv_guide_arrive_at_stop.text = "안내방송이 나오는\n버스에 탑승해주세요."
                             }
-                            tv_bus_num_arrive_at_stop.text = SharedPreferenceController.getBusNumber(applicationContext)
+                            tv_bus_num_arrive_at_stop.text = SharedPreferenceController.getBusNumber(applicationContext)+"번"
                         }
                         403 -> {
                             Log.d("busResponse 상태 코드: ","403")

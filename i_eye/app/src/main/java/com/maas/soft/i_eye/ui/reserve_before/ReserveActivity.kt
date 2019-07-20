@@ -49,7 +49,7 @@ class ReserveActivity : AppCompatActivity() {
     private fun getBusNumber(pathResDtoList : List<Point>) {
         for(i in pathResDtoList) {
             i.busNumber?.let {
-                tv_bus_number_reserve.text = it
+                tv_bus_number_reserve.text = it + "번 버스를"
                 SharedPreferenceController.setBusNumber(this, it)
             }
         }

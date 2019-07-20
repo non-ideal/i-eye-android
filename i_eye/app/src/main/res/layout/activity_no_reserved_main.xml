@@ -69,7 +69,8 @@
                 android:lineSpacingExtra="20sp"
                 android:textColor="#ffffff"
                 android:textSize="41sp"
-                android:text="예약된 버스가\n없습니다." />
+                android:text="예약된 버스가\n없습니다."
+                android:contentDescription="예약된 버스가 없습니다."/>
         </RelativeLayout>
 
     </RelativeLayout>

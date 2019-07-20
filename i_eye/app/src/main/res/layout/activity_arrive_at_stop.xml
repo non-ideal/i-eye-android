@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="33dp">
+                android:layout_marginBottom="25dp">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -31,7 +31,8 @@
                         android:textSize="36sp"
                         android:textColor="#ffffff"
                         android:gravity="center_horizontal"
-                        android:lineSpacingExtra="4sp"/>
+                        android:lineSpacingExtra="4sp"
+                        android:layout_marginBottom="10dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -42,19 +43,11 @@
                         android:id="@+id/tv_bus_num_arrive_at_stop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="421"
+                        android:text="421번"
                         android:fontFamily="@font/font_medium"
                         android:textSize="36sp"
                         android:textColor="#ffffff"
-                        android:gravity="center_horizontal"
-                        android:lineSpacingExtra="4sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="번"
-                        android:fontFamily="@font/font_medium"
-                        android:textSize="36sp"
-                        android:textColor="#ffffff"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:lineSpacingExtra="4sp"/>
                 </LinearLayout>
@@ -79,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="도착 후, 버스 앞 문에서\n안내방송이 나옵니다."
+                android:lineSpacingExtra="5dp"
                 android:contentDescription="도착 후, 버스 앞 문에서 안내방송이 나옵니다."
                 android:textSize="22sp"
                 android:fontFamily="@font/font_regular"

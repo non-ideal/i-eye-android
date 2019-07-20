@@ -7,6 +7,21 @@
     android:orientation="vertical"
     tools:context=".ui.reserve_before.CheckDestinationVoiceInputActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/orange">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/font_medium"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="35sp"
+            android:text="목적지 검색"/>
+    </RelativeLayout>
     <TextView
         android:id="@+id/tv_dest_check_dest_voice"
         android:layout_width="match_parent"

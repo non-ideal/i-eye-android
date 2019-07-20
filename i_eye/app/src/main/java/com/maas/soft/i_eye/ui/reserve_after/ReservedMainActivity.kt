@@ -15,7 +15,7 @@ class ReservedMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reserved_main)
         setClickListener()
-        tv_bus_number_reserved_main.text = SharedPreferenceController.getBusNumber(this)
+        tv_bus_number_reserved_main.text = SharedPreferenceController.getBusNumber(this)+"번 버스"
     }
 
     private fun setClickListener() {
