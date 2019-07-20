@@ -28,6 +28,7 @@ class ReserveActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("@@@@", "~~~~~~")
         setContentView(R.layout.activity_reserve)
         getLatLng()
         getPathResponse()

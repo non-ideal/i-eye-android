@@ -29,8 +29,8 @@ class SearchDestinationActivity : AppCompatActivity() , View.OnClickListener {
         val intent = Intent(this, CheckDestinationActivity::class.java)
         intent.putExtra("Destination", placeItems[rv_search_dest_search.getChildAdapterPosition(v!!)])
 
-        SharedPreferenceController.setDestinationLat(this, item[rv_search_dest_search.getChildAdapterPosition(v)].poiPoint.latitude)
-        SharedPreferenceController.setDestinationLng(this, item[rv_search_dest_search.getChildAdapterPosition(v)].poiPoint.longitude)
+        SharedPreferenceController.setDestinationLat(this, 37.51076889038086)
+        SharedPreferenceController.setDestinationLng(this, 127.04368591308594)
 
         startActivity(intent)
     }
