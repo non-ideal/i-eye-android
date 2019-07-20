@@ -3,6 +3,7 @@ package com.maas.soft.i_eye.ui.reserve_after
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.maas.soft.i_eye.R
 import com.maas.soft.i_eye.controller.SharedPreferenceController
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
@@ -25,6 +26,7 @@ class ReservedMainActivity : AppCompatActivity() {
             finish()
         }
         btn_directions_reserved_main.setOnClickListener {
+            Log.d("@@@@@@", "길찾기 버튼 클릭")
             val intent = Intent(applicationContext, DirectionsActivity::class.java)
             startActivity(intent)
         }

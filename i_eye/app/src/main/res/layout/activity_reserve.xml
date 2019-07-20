@@ -102,7 +102,7 @@
                     android:text="예약하시겠습니까?" />
 
                 <TextView
-                    android:id="@+id/tv_bus_time_reserve"
+                    android:id="@+id/tv_time_reserve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_medium"

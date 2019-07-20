@@ -9,7 +9,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.maas.soft.i_eye.R
 import com.maas.soft.i_eye.controller.SharedPreferenceController
-import com.maas.soft.i_eye.model.PathResDto
+import com.maas.soft.i_eye.model.Point
 import com.maas.soft.i_eye.network.ApplicationController
 import com.maas.soft.i_eye.network.NetworkService
 import com.skt.Tmap.TMapView
@@ -39,7 +39,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.os.Vibrator
 import android.speech.tts.TextToSpeech
-import android.view.animation.RotateAnimation
+import com.maas.soft.i_eye.model.PathResDto
 import com.maas.soft.i_eye.model.Type
 import com.skt.Tmap.TMapMarkerItem
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
@@ -81,7 +81,7 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
     private var finalDesLat : Double = 0.0
     private var finalDesLng : Double= 0.0
 
-    private var paths : ArrayList<PathResDto> = ArrayList()
+    private var paths : ArrayList<Point> = ArrayList()
     private var pathCnt = 0
 
     private var networkService: NetworkService = ApplicationController.instance.networkService
@@ -90,6 +90,8 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d("@@@@@@", "길찾기 액티비티 진입")
         setContentView(R.layout.activity_directions)
 
         mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
@@ -160,12 +162,19 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                 if (location != null) {
                     latitude = location.latitude
                     longitude = location.longitude
-                    tMapView.setLocationPoint(longitude, latitude);
-                    tMapView.setCenterPoint(longitude, latitude);
+                    tMapView.setLocationPoint(longitude, latitude)
+                    tMapView.setCenterPoint(longitude, latitude)
                 }
+                Log.d("@@@@@@", "위치 변경 감지")
+                Log.d("ㅁㄴㅇㄹ", "현재 좌표 $longitude, $latitude")
+                Log.d("ㅁㄴㅇㄹ", "목적지 좌표 $desLongitude, $desLatitude")
 
-                if(desLatitude-0.0002 <= latitude && latitude <= desLatitude+0.0002 && desLongitude-0.0002 <= longitude && longitude <= desLongitude+0.0002){
+                if(desLatitude-0.02 <= latitude && latitude <= desLatitude+0.02 && desLongitude-0.02 <= longitude && longitude <= desLongitude+0.02){
+                    Log.d("@@@@@@", "도착")
+
                     if(status==1) {
+                        Log.d("@@@@@@", "status 1, 버스 정류장 도착")
+
                         tts.speak("버스 정류장에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
                         SharedPreferenceController.setStatus(applicationContext, 2)
                         Intent(applicationContext, ArriveAtStopActivity::class.java).let {
@@ -175,6 +184,8 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                             finish()
                         }
                     }else {
+                        Log.d("@@@@@@", "status 1 아님, 목적지 도착")
+
                         tts.speak("목적지에 도착하였습니다. 하단의 안내 종료 버튼을 눌러서 안내를 종료하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
                         SharedPreferenceController.setStatus(applicationContext, 0)
                         startActivity(Intent(applicationContext, NoReservedMainActivity::class.java))
@@ -270,9 +281,9 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         tMapView.contentDescription = "지도 영역입니다"
     }
 
-    private fun drawLine(pathResDtoList : List<PathResDto>) {
+    private fun drawLine(pathResDtoList : List<Point>) {
         val alTMapPoint = ArrayList<TMapPoint>()
-        paths = pathResDtoList as ArrayList<PathResDto>
+        paths = pathResDtoList as ArrayList<Point>
 
         if (status==1) {
             // 예약O, 탑승 전
@@ -378,19 +389,19 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         val getPathResponse = networkService.getPathResponse(gsonObject)
 
-        getPathResponse!!.enqueue(object : Callback<List<PathResDto>> {
-            override fun onFailure(call: Call<List<PathResDto>>, t: Throwable) {
+        getPathResponse!!.enqueue(object : Callback<PathResDto> {
+            override fun onFailure(call: Call<PathResDto>, t: Throwable) {
                 Log.d("pathResponse 호출: ","onFailure")
                 Log.d("pathResponse 에러: ", t.message)
             }
-            override fun onResponse(call: Call<List<PathResDto>>, response: Response<List<PathResDto>>) {
+            override fun onResponse(call: Call<PathResDto>, response: Response<PathResDto>) {
                 response?.let {
                     when (it.code()) {
                         200 -> {
                             Log.d("pathResponse 상태 코드: ","200")
                             Log.d("pathResponse 결과: ", response.body().toString())
 
-                            drawLine(response.body()!!)
+                            drawLine(response.body()!!.points)
                             drawMarker()
                         }
                         403 -> {

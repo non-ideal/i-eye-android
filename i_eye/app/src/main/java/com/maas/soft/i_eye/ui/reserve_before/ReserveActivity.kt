@@ -9,6 +9,7 @@ import com.google.gson.JsonParser
 import com.maas.soft.i_eye.R
 import com.maas.soft.i_eye.controller.SharedPreferenceController
 import com.maas.soft.i_eye.model.PathResDto
+import com.maas.soft.i_eye.model.Point
 import com.maas.soft.i_eye.network.ApplicationController
 import com.maas.soft.i_eye.network.NetworkService
 import com.maas.soft.i_eye.ui.reserve_after.ReservedMainActivity
@@ -45,11 +46,22 @@ class ReserveActivity : AppCompatActivity() {
         Log.d("길찾기 좌표 확인", "현재 ($longitude, $latitude) / 목적지 ($desLongitude, $desLatitude)")
     }
 
-    private fun getBusNumber(pathResDtoList : List<PathResDto>) {
+    private fun getBusNumber(pathResDtoList : List<Point>) {
         for(i in pathResDtoList) {
             i.busNumber?.let {
-                tv_bus_number_reserve.text = it+"번 버스를"
+                tv_bus_number_reserve.text = it
                 SharedPreferenceController.setBusNumber(this, it)
+            }
+        }
+    }
+
+    private fun getBusReqData(pathResDtoList : List<Point>) {
+        for(i in pathResDtoList) {
+            i.routeId?.let {
+                SharedPreferenceController.setRouteId(this, it)
+            }
+            i.fid?.let {
+                SharedPreferenceController.setStationId(this, it)
             }
         }
     }
@@ -72,18 +84,20 @@ class ReserveActivity : AppCompatActivity() {
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         val getPathResponse = networkService.getPathResponse(gsonObject)
 
-        getPathResponse!!.enqueue(object : Callback<List<PathResDto>> {
-            override fun onFailure(call: Call<List<PathResDto>>, t: Throwable) {
+        getPathResponse!!.enqueue(object : Callback<PathResDto> {
+            override fun onFailure(call: Call<PathResDto>, t: Throwable) {
                 Log.d("pathResponse 호출: ","onFailure")
                 Log.d("pathResponse 에러: ", t.message)
             }
-            override fun onResponse(call: Call<List<PathResDto>>, response: Response<List<PathResDto>>) {
+            override fun onResponse(call: Call<PathResDto>, response: Response<PathResDto>) {
                 response?.let {
                     when (it.code()) {
                         200 -> {
                             Log.d("pathResponse 상태 코드: ","200")
                             Log.d("pathResponse 결과: ", response.body().toString())
-                            getBusNumber(response.body()!!)
+                            getBusNumber(response.body()!!.points)
+                            getBusReqData(response.body()!!.points)
+                            tv_time_reserve.text = "버스 소요시간 ${response.body()!!.time}분"
                         }
                         403 -> {
                             Log.d("pathResponse 상태 코드: ","403")
