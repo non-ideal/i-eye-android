@@ -1,6 +1,5 @@
 package com.maas.soft.i_eye.ui.reserve_after
 
-import android.Manifest
 import android.graphics.Color
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -147,6 +146,14 @@ class DirectionsActivity : AppCompatActivity() {
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0f, locationListener)
     }
 
+     private fun getDirectionBetween(lat1:Double, lng1:Double, lat2:Double, lng2:Double) : Long{
+         val PI = Math.PI
+         val dTeta = Math.log(Math.tan((lat2/2)+(PI/4))/Math.tan((lat1/2)+(PI/4)))
+         val dLon = Math.abs(lng1-lng2)
+         val teta = Math.atan2(dLon,dTeta)
+         return Math.round(Math.toDegrees(teta))
+    }
+
     private fun chkPoint() {
         for (i in pathCnt until paths.size){
             if(paths[i].type==Type.POINT && paths[i].turnType!="일반" && paths[i].y-0.0001 <= latitude && latitude <= paths[i].y+0.0001 && paths[i].x-0.0001 <= longitude && longitude <= paths[i].x+0.0001){
@@ -154,6 +161,8 @@ class DirectionsActivity : AppCompatActivity() {
                 pathCnt = i
                 break
             }
+
+            // point's direction
         }
     }
 
