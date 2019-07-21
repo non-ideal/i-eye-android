@@ -14,6 +14,7 @@ class CheckCurrentLocationActivity : AppCompatActivity() {
         setContentView(com.maas.soft.i_eye.R.layout.activity_check_current_location)
         setClickListener()
         setCurrentLocationText()
+        tv_current_location.isClickable = false
     }
 
     private fun setCurrentLocationText() {

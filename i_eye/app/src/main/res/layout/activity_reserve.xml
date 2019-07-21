@@ -58,7 +58,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/linear_btn_reserve"
-            android:background="@color/black">
+            android:background="@color/black"
+            android:contentDescription="6703번 버스를 예약하시겠습니까?\n버스 소요시간 10분">
 
             <LinearLayout
                 android:layout_width="match_parent"

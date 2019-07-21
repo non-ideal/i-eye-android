@@ -31,8 +31,8 @@ class ReservedMainActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, DirectionsActivity::class.java)
             startActivity(intent)
         }
-        relative_reserved_main.setOnClickListener {
-            startActivity(Intent(this, DirectionsTestActivity::class.java))
-        }
+//        relative_reserved_main.setOnClickListener {
+//            startActivity(Intent(this, DirectionsTestActivity::class.java))
+//        }
     }
 }

@@ -112,38 +112,166 @@ class DirectionsTestActivity : AppCompatActivity(){
 
     private fun setLocation() {
 //        for (i in 0 until paths.size){
-//            if(paths[i].type==Type.BUS_STOP)
-//                break
-
+        Handler().postDelayed({
+            tMapView.setCenterPoint(127.03121516595668, 37.50563215168024)
             Handler().postDelayed({
-                tMapView.setLocationPoint(paths[0].x, paths[0].y)
-                Log.d("ASDASD", "${paths[0].x}, ${paths[0].y}")
-
+                tMapView.setCenterPoint(127.03114781150711, 37.50561340264893)
                 Handler().postDelayed({
-                    tMapView.setLocationPoint(127.03121516595668, paths[1].y)
-                    Log.d("ASDASD", "${paths[1].x}, ${paths[1].y}")
+                    tMapView.setCenterPoint(127.03111413428232, 37.505604028133284)
                     Handler().postDelayed({
-                        tMapView.setLocationPoint(paths[2].x, paths[2].y)
-                        Log.d("ASDASD", "${paths[2].x}, ${paths[2].y}")
+                        tMapView.setCenterPoint(127.03109729566992, 37.50559934087546)
                         Handler().postDelayed({
-                            tMapView.setLocationPoint(paths[3].x, paths[3].y)
-                            Log.d("ASDASD", "${paths[3].x}, ${paths[3].y}")
+                            tMapView.setCenterPoint(127.03108887636373, 37.50559699724655)
                             Handler().postDelayed({
-                                tMapView.setLocationPoint(paths[4].x, paths[4].y)
-                                Log.d("ASDASD", "${paths[4].x}, ${paths[4].y}")
+                                tMapView.setCenterPoint(127.03108466671063, 37.505595825432096)
                                 Handler().postDelayed({
-                                    tMapView.setLocationPoint(paths[5].x, paths[5].y)
-                                    Log.d("ASDASD", "${paths[5].x}, ${paths[5].y}")
+                                    tMapView.setCenterPoint(127.03108256188409, 37.505595239524865)
                                     Handler().postDelayed({
-                                        tMapView.setLocationPoint(paths[6].x, paths[6].y)
-                                        Log.d("ASDASD", "${paths[6].x}, ${paths[6].y}")
+                                        tMapView.setCenterPoint(127.03108150947082, 37.50559494657125)
                                         Handler().postDelayed({
-                                            tMapView.setLocationPoint(paths[7].x, paths[7].y)
-                                            Log.d("ASDASD", "${paths[7].x}, ${paths[7].y}")
+                                            tMapView.setCenterPoint(127.03108098326419, 37.50559480009444)
                                             Handler().postDelayed({
-                                                tMapView.setLocationPoint(paths[8].x, paths[8].y)
-                                                Log.d("ASDASD", "${paths[8].x}, ${paths[8].y}")
-
+                                                tMapView.setCenterPoint(127.03108072016087, 37.50559472685604)
+                                                Handler().postDelayed({
+                                                    tMapView.setCenterPoint(127.0310805886092, 37.50559469023683)
+                                                    Handler().postDelayed({
+                                                        tMapView.setCenterPoint(127.03108052283338, 37.505594671927234)
+                                                        Handler().postDelayed({
+                                                            tMapView.setCenterPoint(127.03108048994545, 37.50559466277244)
+                                                            Handler().postDelayed({
+                                                                tMapView.setCenterPoint(127.0310804735015, 37.50559465819504)
+                                                                Handler().postDelayed({
+                                                                    tMapView.setCenterPoint(127.03108046527953, 37.505594655906336)
+                                                                    Handler().postDelayed({
+                                                                        tMapView.setCenterPoint(127.03108046116853, 37.505594654761985)
+                                                                        Handler().postDelayed({
+                                                                            tMapView.setCenterPoint(127.03108045911304, 37.50559465418981)
+                                                                            Handler().postDelayed({
+                                                                                tMapView.setCenterPoint(127.03108045808528, 37.50559465390372)
+                                                                                Handler().postDelayed({
+                                                                                    tMapView.setCenterPoint(127.03108045757142, 37.50559465376068)
+                                                                                    Handler().postDelayed({
+                                                                                        tMapView.setCenterPoint(127.03108045731449, 37.50559465368916)
+                                                                                        Handler().postDelayed({
+                                                                                            tMapView.setCenterPoint(127.03108045718602, 37.5055946536534)
+                                                                                            Handler().postDelayed({
+                                                                                                tMapView.setCenterPoint(127.03108045712179, 37.50559465363551)
+                                                                                                Handler().postDelayed({
+                                                                                                    tMapView.setCenterPoint(127.03108045708967, 37.505594653626574)
+                                                                                                    Handler().postDelayed({
+                                                                                                        tMapView.setCenterPoint(127.03108045707361, 37.505594653622104)
+                                                                                                        Handler().postDelayed({
+                                                                                                            tMapView.setCenterPoint(127.03108045706557, 37.505594653619866)
+                                                                                                            Handler().postDelayed({
+                                                                                                                tMapView.setCenterPoint(127.03108045706156, 37.50559465361875)
+                                                                                                                Handler().postDelayed({
+                                                                                                                    tMapView.setCenterPoint(127.03108045705955, 37.50559465361819)
+                                                                                                                    Handler().postDelayed({
+                                                                                                                        tMapView.setCenterPoint(127.03108045705855, 37.50559465361791)
+                                                                                                                        Handler().postDelayed({
+                                                                                                                            tMapView.setCenterPoint(127.03108045705804, 37.50559465361778)
+                                                                                                                            Handler().postDelayed({
+                                                                                                                                tMapView.setCenterPoint(127.03108045705754, 37.505594653617635)
+                                                                                                                                Handler().postDelayed({
+                                                                                                                                    tMapView.setCenterPoint(127.03101310260797, 37.50557590458633)
+                                                                                                                                    Handler().postDelayed({
+                                                                                                                                        tMapView.setCenterPoint(127.03097942538318, 37.50556653007068)
+                                                                                                                                        Handler().postDelayed({
+                                                                                                                                            tMapView.setCenterPoint(127.03096258677078, 37.50556184281285)
+                                                                                                                                            Handler().postDelayed({
+                                                                                                                                                tMapView.setCenterPoint(127.03095416746459, 37.50555949918394)
+                                                                                                                                                Handler().postDelayed({
+                                                                                                                                                    tMapView.setCenterPoint(127.03094995781149, 37.505558327369485)
+                                                                                                                                                    Handler().postDelayed({
+                                                                                                                                                        tMapView.setCenterPoint(127.03094785298495, 37.505557741462255)
+                                                                                                                                                        Handler().postDelayed({
+                                                                                                                                                            tMapView.setCenterPoint(127.03094680057168, 37.50555744850864)
+                                                                                                                                                            Handler().postDelayed({
+                                                                                                                                                                tMapView.setCenterPoint(127.03094627436505, 37.50555730203183)
+                                                                                                                                                                Handler().postDelayed({
+                                                                                                                                                                    tMapView.setCenterPoint(127.03094601126173, 37.50555722879343)
+                                                                                                                                                                    Handler().postDelayed({
+                                                                                                                                                                        tMapView.setCenterPoint(127.03094587971006, 37.50555719217422)
+                                                                                                                                                                        Handler().postDelayed({
+                                                                                                                                                                            tMapView.setCenterPoint(127.03094581393424, 37.505557173864624)
+                                                                                                                                                                            Handler().postDelayed({
+                                                                                                                                                                                tMapView.setCenterPoint(127.03094578104631, 37.50555716470983)
+                                                                                                                                                                                Handler().postDelayed({
+                                                                                                                                                                                    tMapView.setCenterPoint(127.03094576460236, 37.505557160132426)
+                                                                                                                                                                                    Handler().postDelayed({
+                                                                                                                                                                                        tMapView.setCenterPoint(127.0309457481584, 37.505557155555024)
+                                                                                                                                                                                        Handler().postDelayed({
+                                                                                                                                                                                            tMapView.setCenterPoint(127.03081103925926, 37.505519657492414)
+                                                                                                                                                                                            Handler().postDelayed({
+                                                                                                                                                                                                tMapView.setCenterPoint(127.03074368480969, 37.50550090846111)
+                                                                                                                                                                                                Handler().postDelayed({
+                                                                                                                                                                                                    tMapView.setCenterPoint(127.0307100075849, 37.50549153394546)
+                                                                                                                                                                                                    Handler().postDelayed({
+                                                                                                                                                                                                        tMapView.setCenterPoint(127.0306931689725, 37.50548684668763)
+                                                                                                                                                                                                        Handler().postDelayed({
+                                                                                                                                                                                                            tMapView.setCenterPoint(127.0306847496663, 37.50548450305872)
+                                                                                                                                                                                                            Handler().postDelayed({
+                                                                                                                                                                                                                tMapView.setCenterPoint(127.03068054001321, 37.505483331244264)
+                                                                                                                                                                                                                Handler().postDelayed({
+                                                                                                                                                                                                                    tMapView.setCenterPoint(127.03067633036012, 37.5054821594298)
+                                                                                                                                                                                                                    Handler().postDelayed({
+                                                                                                                                                                                                                        tMapView.setCenterPoint(127.03042911461058, 37.50604875583092)
+                                                                                                                                                                                                                        Handler().postDelayed({
+                                                                                                                                                                                                                            tMapView.setCenterPoint(127.0304485556351, 37.50610708273702)
+                                                                                                                                                                                                                            Handler().postDelayed({
+                                                                                                                                                                                                                                tMapView.setCenterPoint(127.03048744090573, 37.50610986089032)
+                                                                                                                                                                                                                                Handler().postDelayed({
+                                                                                                                                                                                                                                    tMapView.setCenterPoint(127.03065131354163, 37.506157080569366)
+                                                                                                                                                                                                                                    Handler().postDelayed({
+                                                                                                                                                                                                                                        tMapView.setCenterPoint(127.03096794887077, 37.506245964817865)
+                                                                                                                                                                                                                                        Handler().postDelayed({
+                                                                                                                                                                                                                                            tMapView.setCenterPoint(127.0310375644094, 37.50608116628093)},1000)
+                                                                                                                                                                                                                                    },1000)
+                                                                                                                                                                                                                                },1000)
+                                                                                                                                                                                                                            },1000)
+                                                                                                                                                                                                                        },1000)
+                                                                                                                                                                                                                    },1000)
+                                                                                                                                                                                                                },1000)
+                                                                                                                                                                                                            },1000)
+                                                                                                                                                                                                        },1000)
+                                                                                                                                                                                                    },1000)
+                                                                                                                                                                                                },1000)
+                                                                                                                                                                                            },1000)
+                                                                                                                                                                                        },1000)
+                                                                                                                                                                                    },1000)
+                                                                                                                                                                                },1000)
+                                                                                                                                                                            },1000)
+                                                                                                                                                                        },1000)
+                                                                                                                                                                    },1000)
+                                                                                                                                                                },1000)
+                                                                                                                                                            },1000)
+                                                                                                                                                        },1000)
+                                                                                                                                                    },1000)
+                                                                                                                                                },1000)
+                                                                                                                                            },1000)
+                                                                                                                                        },1000)
+                                                                                                                                    },1000)
+                                                                                                                                },1000)
+                                                                                                                            },1000)
+                                                                                                                        },1000)
+                                                                                                                    },1000)
+                                                                                                                },1000)
+                                                                                                            },1000)
+                                                                                                        },1000)
+                                                                                                    },1000)
+                                                                                                },1000)
+                                                                                            },1000)
+                                                                                        },1000)
+                                                                                    },1000)
+                                                                                },1000)
+                                                                            },1000)
+                                                                        },1000)
+                                                                    },1000)
+                                                                },1000)
+                                                            },1000)
+                                                        },1000)
+                                                    },1000)
+                                                },1000)
                                             },1000)
                                         },1000)
                                     },1000)
@@ -153,7 +281,8 @@ class DirectionsTestActivity : AppCompatActivity(){
                     },1000)
                 },1000)
             },1000)
-//        }
+        },1000)
+
     }
 
     private fun getLatLng() {

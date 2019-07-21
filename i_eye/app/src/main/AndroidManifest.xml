@@ -35,7 +35,7 @@
         <activity android:name=".ui.tutorial.Tutorial1Activity"
             android:label=""/>
         <activity android:name=".ui.reserve_before.CheckDestinationVoiceInputActivity"
-            android:label=""/>
+            android:label="목적지 음성 입력 확인"/>
         <activity android:name=".ui.favorite.CheckFavoritesVoiceInputActivity"
             android:label=""/>
         <activity android:name=".ui.RatingActivity"
@@ -59,10 +59,10 @@
             android:label=""/>
         <activity
             android:name=".ui.reserve_after.ReservedMainActivity"
-            android:label="메인" />
+            android:label="예약된 버스가 있습니다." />
         <activity
             android:name=".ui.reserve_before.SearchDestinationActivity"
-            android:label="" />
+            android:label="목적지 검색" />
         <activity
             android:name=".ui.favorite.SearchFavoritesActivity"
             android:label="즐겨찾기 검색" />

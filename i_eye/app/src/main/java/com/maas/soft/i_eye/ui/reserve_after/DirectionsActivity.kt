@@ -41,6 +41,7 @@ import android.os.Vibrator
 import android.speech.tts.TextToSpeech
 import com.maas.soft.i_eye.model.PathResDto
 import com.maas.soft.i_eye.model.Type
+import com.maas.soft.i_eye.ui.SplashActivity
 import com.skt.Tmap.TMapMarkerItem
 import com.maas.soft.i_eye.ui.reserve_before.NoReservedMainActivity
 import java.util.*
@@ -110,6 +111,23 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         changeStatusBarColor()
         setLocationListener()
 
+        relative_directions.setOnClickListener {
+
+//            tts.speak("직진하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+            var status : Int = SharedPreferenceController.getStatus(this)
+            if(status == 4) {
+                SharedPreferenceController.setStatus(this, 0)
+                val intent = Intent(this, SplashActivity::class.java)
+                startActivity(intent)
+            }
+
+            else {
+                SharedPreferenceController.setStatus(this, 2)
+                val intent = Intent(this, ArriveAtStopActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         var lm : LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         if (ActivityCompat.checkSelfPermission(applicationContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(applicationContext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -168,31 +186,31 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                 Log.d("ㅁㄴㅇㄹ", "현재 좌표 $longitude, $latitude")
                 Log.d("ㅁㄴㅇㄹ", "목적지 좌표 $desLongitude, $desLatitude")
 
-                if(desLatitude-0.015 <= latitude && latitude <= desLatitude+0.015 && desLongitude-0.015 <= longitude && longitude <= desLongitude+0.015){
-                    Log.d("@@@@@@", "도착")
-
-                    if(status==1) {
-                        Log.d("@@@@@@", "status 1, 버스 정류장 도착")
-
-                        tts.speak("버스 정류장에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
-                        SharedPreferenceController.setStatus(applicationContext, 2)
-                        Intent(applicationContext, ArriveAtStopActivity::class.java).let {
-                            it.putExtra("BUS_NUM", 1125)
-                            // TODO 버스 정보 등 버스 예약에 필요한 정보 넘기기
-                            startActivity(it)
-                            finish()
-                        }
-                    }else {
-                        Log.d("@@@@@@", "status 1 아님, 목적지 도착")
-
-                        tts.speak("목적지에 도착하였습니다. 하단의 안내 종료 버튼을 눌러서 안내를 종료하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
-                        SharedPreferenceController.setStatus(applicationContext, 0)
-                        startActivity(Intent(applicationContext, NoReservedMainActivity::class.java))
-                        finish()
-                    }
-                }
-
-                chkPoint()
+//                if(desLatitude-0.015 <= latitude && latitude <= desLatitude+0.015 && desLongitude-0.015 <= longitude && longitude <= desLongitude+0.015){
+//                    Log.d("@@@@@@", "도착")
+//
+//                    if(status==1) {
+//                        Log.d("@@@@@@", "status 1, 버스 정류장 도착")
+//
+//                        tts.speak("버스 정류장에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+//                        SharedPreferenceController.setStatus(applicationContext, 2)
+//                        Intent(applicationContext, ArriveAtStopActivity::class.java).let {
+//                            it.putExtra("BUS_NUM", 1125)
+//                            // TODO 버스 정보 등 버스 예약에 필요한 정보 넘기기
+//                            startActivity(it)
+//                            finish()
+//                        }
+//                    }else {
+//                        Log.d("@@@@@@", "status 1 아님, 목적지 도착")
+//
+//                        tts.speak("목적지에 도착하였습니다. 하단의 안내 종료 버튼을 눌러서 안내를 종료하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+//                        SharedPreferenceController.setStatus(applicationContext, 0)
+//                        startActivity(Intent(applicationContext, NoReservedMainActivity::class.java))
+//                        finish()
+//                    }
+//                }
+//
+//                chkPoint()
             }
 
 
@@ -296,6 +314,7 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                 alTMapPoint.add(TMapPoint(i.y, i.x))
 
                 if(i.type == Type.BUS_STOP) {
+                    Log.d("BUS_STOP 좌표", "${i.x}, ${i.y}")
                     busStopLng = i.x
                     busStopLat = i.y
                     break
@@ -335,10 +354,13 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         for (i in 0 until alTMapPoint.size) {
             tMapPolyLine.addLinePoint(alTMapPoint[i])
         }
+        drawMarker()
+
         tMapView.addTMapPolyLine("Line1", tMapPolyLine)
     }
 
     private fun drawMarker() {
+        Log.d("drawMarker", "진입")
         var startMarker = TMapMarkerItem()
         var desMarker = TMapMarkerItem()
         var startMarkerPos : TMapPoint
@@ -351,9 +373,11 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
         if (status == 1) {
             startMarkerPos = TMapPoint(SharedPreferenceController.getStartLat(this), SharedPreferenceController.getStartLng(this))
             desMarkerPos = TMapPoint(busStopLat, busStopLng)
+            Log.d("drawMarker", "도착지 좌표: $busStopLng, $busStopLat")
         }
 
         else {
+            Log.d("drawMarker", "?????")
             startMarkerPos = TMapPoint(offBusStopLat, offBusStopLng)
             desMarkerPos = TMapPoint(finalDesLat, finalDesLng)
         }
@@ -406,7 +430,6 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                             Log.d("pathResponse 결과: ", response.body().toString())
 
                             drawLine(response.body()!!.points)
-                            drawMarker()
                         }
                         403 -> {
                             Log.d("pathResponse 상태 코드: ","403")

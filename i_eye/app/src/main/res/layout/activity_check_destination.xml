@@ -58,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/linear_btn_check_destination"
+            android:contentDescription="목적지는 선정릉 입니다."
             android:background="@color/black">
 
             <LinearLayout

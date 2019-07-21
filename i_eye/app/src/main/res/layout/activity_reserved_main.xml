@@ -60,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/linear_btn_reserved_main"
+            android:contentDescription="6703번 버스 예약되었습니다."
             android:background="@color/black">
 
             <LinearLayout
