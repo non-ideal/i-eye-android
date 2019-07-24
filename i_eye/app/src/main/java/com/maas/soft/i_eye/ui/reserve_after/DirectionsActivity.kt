@@ -183,34 +183,34 @@ class DirectionsActivity : AppCompatActivity(), SensorEventListener {
                     tMapView.setCenterPoint(longitude, latitude)
                 }
                 Log.d("@@@@@@", "위치 변경 감지")
-                Log.d("ㅁㄴㅇㄹ", "현재 좌표 $longitude, $latitude")
-                Log.d("ㅁㄴㅇㄹ", "목적지 좌표 $desLongitude, $desLatitude")
+                Log.d("@@@@@@", "현재 좌표 $longitude, $latitude")
+                Log.d("@@@@@@", "목적지 좌표 $desLongitude, $desLatitude")
 
-//                if(desLatitude-0.015 <= latitude && latitude <= desLatitude+0.015 && desLongitude-0.015 <= longitude && longitude <= desLongitude+0.015){
-//                    Log.d("@@@@@@", "도착")
-//
-//                    if(status==1) {
-//                        Log.d("@@@@@@", "status 1, 버스 정류장 도착")
-//
-//                        tts.speak("버스 정류장에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
-//                        SharedPreferenceController.setStatus(applicationContext, 2)
-//                        Intent(applicationContext, ArriveAtStopActivity::class.java).let {
-//                            it.putExtra("BUS_NUM", 1125)
-//                            // TODO 버스 정보 등 버스 예약에 필요한 정보 넘기기
-//                            startActivity(it)
-//                            finish()
-//                        }
-//                    }else {
-//                        Log.d("@@@@@@", "status 1 아님, 목적지 도착")
-//
-//                        tts.speak("목적지에 도착하였습니다. 하단의 안내 종료 버튼을 눌러서 안내를 종료하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
-//                        SharedPreferenceController.setStatus(applicationContext, 0)
-//                        startActivity(Intent(applicationContext, NoReservedMainActivity::class.java))
-//                        finish()
-//                    }
-//                }
-//
-//                chkPoint()
+                if(desLatitude-0.015 <= latitude && latitude <= desLatitude+0.015 && desLongitude-0.015 <= longitude && longitude <= desLongitude+0.015){
+                    Log.d("@@@@@@", "도착")
+
+                    if(status==1) {
+                        Log.d("@@@@@@", "status 1, 버스 정류장 도착")
+
+                        tts.speak("버스 정류장에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+                        SharedPreferenceController.setStatus(applicationContext, 2)
+                        Intent(applicationContext, ArriveAtStopActivity::class.java).let {
+                            it.putExtra("BUS_NUM", 1125)
+                            // TODO 버스 정보 등 버스 예약에 필요한 정보 넘기기
+                            startActivity(it)
+                            finish()
+                        }
+                    }else {
+                        Log.d("@@@@@@", "status 1 아님, 목적지 도착")
+
+                        tts.speak("목적지에 도착하였습니다. 하단의 안내 종료 버튼을 눌러서 안내를 종료하세요.", TextToSpeech.QUEUE_FLUSH, null, this.hashCode().toString())
+                        SharedPreferenceController.setStatus(applicationContext, 0)
+                        startActivity(Intent(applicationContext, NoReservedMainActivity::class.java))
+                        finish()
+                    }
+                }
+
+                chkPoint()
             }
 
 

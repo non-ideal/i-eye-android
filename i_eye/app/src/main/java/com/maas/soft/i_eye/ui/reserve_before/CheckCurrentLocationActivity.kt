@@ -19,7 +19,7 @@ class CheckCurrentLocationActivity : AppCompatActivity() {
 
     private fun setCurrentLocationText() {
         var currentLocation : String = intent.getStringExtra("currentLocation")
-//        tv_current_location.text = currentLocation
+        tv_current_location.text = currentLocation
     }
 
     private fun setClickListener() {
@@ -27,8 +27,8 @@ class CheckCurrentLocationActivity : AppCompatActivity() {
             var latitude : Double = intent.getDoubleExtra("latitude", 0.0)
             var longitude : Double = intent.getDoubleExtra("longitude", 0.0)
 
-            SharedPreferenceController.setStartLat(this, 37.50585174560547)
-            SharedPreferenceController.setStartLng(this, 127.03115844726562)
+            SharedPreferenceController.setStartLat(this, latitude)
+            SharedPreferenceController.setStartLng(this, longitude)
 
             val intent = Intent(applicationContext, SearchDestinationActivity::class.java)
             startActivity(intent)

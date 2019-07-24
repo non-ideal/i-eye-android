@@ -14,6 +14,8 @@ class CheckToGetOffActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_to_get_off)
 
+        tv_des_check_to_get_off.text = SharedPreferenceController.getDestination(this)
+
         btn_get_off_check_to_get_off.setOnClickListener {
             SharedPreferenceController.setStatus(this, 4)
             val intent = Intent(this, DirectionsActivity::class.java)

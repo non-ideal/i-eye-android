@@ -19,6 +19,7 @@ object SharedPreferenceController {
     private val STATION_ID : String = "station_id"
     private val ROUTE_ID : String = "route_id"
     private val END_STATION_ID : String = "end_station_id"
+    private val DESTINATION : String = "destination"
     private val CLEAR_ALL : String = "clear_all"
 
     /**
@@ -198,6 +199,22 @@ object SharedPreferenceController {
     fun getEndStationId(ctx : Context) : String {
         val preferences : SharedPreferences = ctx.getSharedPreferences(END_STATION_ID, MODE_PRIVATE)
         return preferences.getString(END_STATION_ID, "")
+    }
+
+    /**
+     * DESTINATION
+     * String
+     */
+    fun setDestination(ctx : Context, input_des : String) {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(DESTINATION, MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = preferences.edit()
+        editor.putString(DESTINATION, input_des)
+        editor.commit()
+    }
+
+    fun getDestination(ctx : Context) : String {
+        val preferences : SharedPreferences = ctx.getSharedPreferences(DESTINATION, MODE_PRIVATE)
+        return preferences.getString(DESTINATION, "")
     }
 
 
